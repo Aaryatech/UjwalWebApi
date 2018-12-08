@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 
 public class Info {
 
-  
     private String message;
     
     private Boolean error;
