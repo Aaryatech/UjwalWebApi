@@ -55,5 +55,30 @@ public class MTaxWebApiController {
 		return info;
 		
 	}
-	
+	@RequestMapping(value = { "/deleteMultiTax" }, method = RequestMethod.POST)
+	public @ResponseBody Info deleteMultiTax(@RequestParam("taxIds") List<Integer> taxIds) {
+
+		Info info = new Info();
+
+		try {
+			int delete = taxRepo.deleteMultiTax(taxIds);
+
+			if (delete >= 1) {
+				info.setError(false);
+				info.setMessage("successfully Multiple Deleted");
+			} else {
+				info.setError(true);
+				info.setMessage(" Deleted to Delete");
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			info.setError(true);
+			info.setMessage(" Deleted to Delete");
+
+		}
+		return info;
+
+	}
 }

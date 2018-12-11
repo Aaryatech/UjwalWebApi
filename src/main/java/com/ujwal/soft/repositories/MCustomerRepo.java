@@ -21,6 +21,11 @@ public interface MCustomerRepo extends JpaRepository<MCustomer, Integer>{
 	@Modifying
 	@Query(value="update m_customer set cust_del_status = 1 where cust_id=:id",nativeQuery=true)
 	public int deleteCustomer(@Param("id") int id);
+	
+	@Transactional
+	@Modifying
+	@Query(value="update m_customer set cust_del_status = 1 where cust_id IN(:custIds)",nativeQuery=true)
+	int deleteMultiCompany(@Param("custIds") List<Integer> custIds);
 
 	//int deleteCustomer(int id);
 

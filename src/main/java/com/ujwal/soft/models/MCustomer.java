@@ -14,13 +14,14 @@ public class MCustomer {
 	private String custName;
 	private String custAddress;
 	private String custPhone;
-	private String custGst;
+	private String custGstn;
 	private String custPan;
 	private String custEmail;
 	private String custVehNo;
 	private String custChasiNo;
 	private String custRegisNo;
 	private String custRoNo;
+	private String custState;
 	
 	
 	private int custDelStatus;
@@ -34,6 +35,14 @@ public class MCustomer {
 	private boolean exBool2;
 	private Date exDate1;
 	private Date exDate2;
+	
+	
+	public String getCustState() {
+		return custState;
+	}
+	public void setCustState(String custState) {
+		this.custState = custState;
+	}
 	public int getCustId() {
 		return custId;
 	}
@@ -58,11 +67,12 @@ public class MCustomer {
 	public void setCustPhone(String custPhone) {
 		this.custPhone = custPhone;
 	}
-	public String getCustGst() {
-		return custGst;
+
+	public String getCustGstn() {
+		return custGstn;
 	}
-	public void setCustGst(String custGst) {
-		this.custGst = custGst;
+	public void setCustGstn(String custGstn) {
+		this.custGstn = custGstn;
 	}
 	public String getCustPan() {
 		return custPan;
@@ -169,12 +179,15 @@ public class MCustomer {
 	@Override
 	public String toString() {
 		return "MCustomer [custId=" + custId + ", custName=" + custName + ", custAddress=" + custAddress
-				+ ", custPhone=" + custPhone + ", custGst=" + custGst + ", custPan=" + custPan + ", custEmail="
+				+ ", custPhone=" + custPhone + ", custGstn=" + custGstn + ", custPan=" + custPan + ", custEmail="
 				+ custEmail + ", custVehNo=" + custVehNo + ", custChasiNo=" + custChasiNo + ", custRegisNo="
-				+ custRegisNo + ", custRoNo=" + custRoNo + ", custDelStatus=" + custDelStatus + ", exInt1=" + exInt1
-				+ ", exInt2=" + exInt2 + ", exInt3=" + exInt3 + ", extVar1=" + extVar1 + ", extVar2=" + extVar2
-				+ ", extVar3=" + extVar3 + ", exBool1=" + exBool1 + ", exBool2=" + exBool2 + ", exDate1=" + exDate1
-				+ ", exDate2=" + exDate2 + "]";
+				+ custRegisNo + ", custRoNo=" + custRoNo + ", custState=" + custState + ", custDelStatus="
+				+ custDelStatus + ", exInt1=" + exInt1 + ", exInt2=" + exInt2 + ", exInt3=" + exInt3 + ", extVar1="
+				+ extVar1 + ", extVar2=" + extVar2 + ", extVar3=" + extVar3 + ", exBool1=" + exBool1 + ", exBool2="
+				+ exBool2 + ", exDate1=" + exDate1 + ", exDate2=" + exDate2 + "]";
 	}
 	
+	
 }
+	
+

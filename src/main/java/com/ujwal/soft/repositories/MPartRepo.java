@@ -23,4 +23,13 @@ public interface MPartRepo extends JpaRepository<MPart, Integer> {
 	@Modifying
 	@Query(value="update m_part set part_del_status = 1 where part_id=:id",nativeQuery=true)
 	public int deletePart(@Param("id") int id);
+
+	@Transactional
+	@Modifying
+	@Query(value="update m_part set part_del_status = 1 where part_id IN(:partIds)",nativeQuery=true)
+	int deleteMultiPart(@Param("partIds") List<Integer> custIds);
+
+	
+	
+	//int deleteMultiCompany(List<Integer> partIds);
 }

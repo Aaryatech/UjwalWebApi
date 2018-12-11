@@ -23,4 +23,10 @@ public interface MTaxRepo extends JpaRepository<MTax, Integer> {
 	@Modifying
 	@Query(value="update m_tax set del_status = 1 where tax_id=:id",nativeQuery=true)
 	public int deleteTax(int id);
+	
+	@Transactional
+	@Modifying
+	@Query(value="update m_tax set del_status = 1 where tax_id IN(:taxIds)",nativeQuery=true)
+	int deleteMultiTax(@Param("taxIds") List<Integer> taxIds);
+
 }

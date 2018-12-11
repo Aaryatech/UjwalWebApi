@@ -40,8 +40,8 @@ public class MPartWebApiController {
 	
 	
 	
-	@RequestMapping(value="/deleteCustomer", method=RequestMethod.POST)
-	public @ResponseBody Info delCustomer(@RequestParam int id) {
+	@RequestMapping(value="/deletePartId", method=RequestMethod.POST)
+	public @ResponseBody Info delPart(@RequestParam int id) {
 		
 		Info info =new Info();
 		int isDelete = mpartRepo.deletePart(id);
@@ -55,5 +55,31 @@ public class MPartWebApiController {
 		}
 		return info;
 		
+	}
+	@RequestMapping(value = { "/deleteMultiPart" }, method = RequestMethod.POST)
+	public @ResponseBody Info deleteMultiPart(@RequestParam("partIds") List<Integer> partIds) {
+
+		Info info = new Info();
+
+		try {
+			int delete = mpartRepo.deleteMultiPart(partIds);
+
+			if (delete >= 1) {
+				info.setError(false);
+				info.setMessage("successfully Multiple Deleted");
+			} else {
+				info.setError(true);
+				info.setMessage(" Deleted to Delete");
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			info.setError(true);
+			info.setMessage(" Deleted to Delete");
+
+		}
+		return info;
+
 	}
 }

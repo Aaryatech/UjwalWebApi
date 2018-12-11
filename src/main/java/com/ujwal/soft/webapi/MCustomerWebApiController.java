@@ -41,7 +41,7 @@ public class MCustomerWebApiController {
 	
 	
 	
-	@RequestMapping(value="/deleteCustmer", method=RequestMethod.POST)
+	@RequestMapping(value="/deleteCustomerId", method=RequestMethod.POST)
 	public @ResponseBody Info delCustomer(@RequestParam int id) {
 		
 		Info info =new Info();
@@ -56,5 +56,32 @@ public class MCustomerWebApiController {
 		}
 		return info;
 		
+	}
+	
+	@RequestMapping(value = { "/deleteMultiCustomer" }, method = RequestMethod.POST)
+	public @ResponseBody Info deleteMultiCustomer(@RequestParam("custIds") List<Integer> custIds) {
+
+		Info info = new Info();
+
+		try {
+			int delete = mcustRepo.deleteMultiCompany(custIds);
+
+			if (delete >= 1) {
+				info.setError(false);
+				info.setMessage("successfully Multiple Deleted");
+			} else {
+				info.setError(true);
+				info.setMessage(" Deleted to Delete");
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			info.setError(true);
+			info.setMessage(" Deleted to Delete");
+
+		}
+		return info;
+
 	}
 }
