@@ -16,7 +16,7 @@ public class MCompany {
 	private String compName;
 	private String address;
 	private String phoneNo;
-	private String gstid;
+	private String gstin;
 	private String panNo;
 	private String logo;
 	private String email;
@@ -55,11 +55,11 @@ public class MCompany {
 	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
-	public String getGstid() {
-		return gstid;
+	public String getGstin() {
+		return gstin;
 	}
-	public void setGstid(String gstid) {
-		this.gstid = gstid;
+	public void setGstin(String gstin) {
+		this.gstin = gstin;
 	}
 	public String getPanNo() {
 		return panNo;
@@ -148,7 +148,7 @@ public class MCompany {
 	@Override
 	public String toString() {
 		return "MCompany [compId=" + compId + ", compName=" + compName + ", address=" + address + ", phoneNo=" + phoneNo
-				+ ", gstid=" + gstid + ", panNo=" + panNo + ", logo=" + logo + ", email=" + email + ", delStatus="
+				+ ", gstid=" + gstin + ", panNo=" + panNo + ", logo=" + logo + ", email=" + email + ", delStatus="
 				+ delStatus + ", exInt1=" + exInt1 + ", exInt2=" + exInt2 + ", exInt3=" + exInt3 + ", extVar1="
 				+ extVar1 + ", extVar2=" + extVar2 + ", extVar3=" + extVar3 + ", exBool1=" + exBool1 + ", exBool2="
 				+ exBool2 + ", exDate1=" + exDate1 + ", exDate2=" + exDate2 + "]";

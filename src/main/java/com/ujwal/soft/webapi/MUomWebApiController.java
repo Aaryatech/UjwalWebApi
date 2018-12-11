@@ -55,4 +55,31 @@ public class MUomWebApiController {
 		return info;
 		
 	}
+	
+	@RequestMapping(value = { "/deleteMultiUom" }, method = RequestMethod.POST)
+	public @ResponseBody Info deleteMultiCompany(@RequestParam("uomIds") List<Integer> uomIds) {
+
+		Info info = new Info();
+
+		try {
+			int delete =umomRepo.deleteMultiUom(uomIds);
+
+			if (delete >= 1) {
+				info.setError(false);
+				info.setMessage("successfully Multiple Deleted");
+			} else {
+				info.setError(true);
+				info.setMessage(" Deleted to Delete");
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			info.setError(true);
+			info.setMessage(" Deleted to Delete");
+
+		}
+		return info;
+
+	}
 }

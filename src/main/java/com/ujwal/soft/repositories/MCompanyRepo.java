@@ -27,6 +27,11 @@ public interface MCompanyRepo extends JpaRepository<MCompany, Integer>{
 	public List<MCompany> findAllByDelStatus(int i);
 
 	public MCompany findByCompIdAndDelStatus(int compId, int delStatus);
+
+	@Transactional
+	@Modifying
+	@Query(value = "UPDATE m_company SET del_status=1  WHERE comp_id IN(:companyIds)",nativeQuery=true)
+	public int deleteMultiCompany(@Param("companyIds") List<Integer> companyIds);
 	
 
 }

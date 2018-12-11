@@ -39,31 +39,6 @@ public class MLocationWebApiController {
 		
 	}
 	
-	/*@RequestMapping(value="/updateLocation", method=RequestMethod.POST)
-	public@ResponseBody MLocation updateLocation(@RequestBody MLocation mloc) {
-		
-		MLocation location = mlocRepo.getLocationById(mloc.getCompId());
-		location.setLocation_name(mloc.getLocation_name());
-		location.setLocationAddress(mloc.getLocationAddress());
-		location.setPhoneNo(mloc.getPhoneNo());
-		location.setFaxNo(mloc.getFaxNo());
-		location.setEmail(mloc.getEmail());
-		location.setCompId(mloc.getCompId());
-		location.setDelStatus(mloc.getDelStatus());
-		location.setExInt1(mloc.getExInt1());
-		location.setExInt2(mloc.getExInt2());
-		location.setExInt3(mloc.getExInt3());
-		location.setExtVar1(mloc.getExtVar1());
-		location.setExtVar2(mloc.getExtVar2());
-		location.setExtVar3(mloc.getExtVar3());
-		location.setExBool1(mloc.isExBool1());
-		location.setExBool2(mloc.isExBool2());
-		location.setExDate1(mloc.getExDate1());
-		location.setExDate2(mloc.getExDate2());
-		
-		return mlocRepo.save(location);
-		
-	}*/
 	
 	@RequestMapping(value="/deleteLocation", method=RequestMethod.POST)
 	public@ResponseBody Info deleteLoc(@RequestParam int id) {
@@ -82,6 +57,33 @@ public class MLocationWebApiController {
 		
 		return info;
 		
+	}
+	
+	@RequestMapping(value = { "/deleteMultiLocation" }, method = RequestMethod.POST)
+	public @ResponseBody Info deleteMultiLocation(@RequestParam("LocIds") List<Integer> LocIds) {
+
+		Info info = new Info();
+
+		try {
+			int delete =mlocRepo.deleteMultiLocation(LocIds);
+
+			if (delete >= 1) {
+				info.setError(false);
+				info.setMessage("successfully Multiple Deleted");
+			} else {
+				info.setError(true);
+				info.setMessage(" Deleted to Delete");
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			info.setError(true);
+			info.setMessage(" Deleted to Delete");
+
+		}
+		return info;
+
 	}
 	
 }

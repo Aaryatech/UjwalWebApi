@@ -58,4 +58,31 @@ public class MCompanyWebApiController {
 		return info;
 		
 	}
+	
+	@RequestMapping(value = { "/deleteMultiCompany" }, method = RequestMethod.POST)
+	public @ResponseBody Info deleteMultiCompany(@RequestParam("companyIds") List<Integer> companyIds) {
+
+		Info info = new Info();
+
+		try {
+			int delete =mcompRepo.deleteMultiCompany(companyIds);
+
+			if (delete >= 1) {
+				info.setError(false);
+				info.setMessage("successfully Multiple Deleted");
+			} else {
+				info.setError(true);
+				info.setMessage(" Deleted to Delete");
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			info.setError(true);
+			info.setMessage(" Deleted to Delete");
+
+		}
+		return info;
+
+	}
 }
