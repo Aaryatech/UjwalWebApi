@@ -1,4 +1,4 @@
-/*package com.ujwal.soft.webapi;
+package com.ujwal.soft.webapi;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ BillHeaderRepo getBillRepo;
 
 			List<BillDetails> billDetList = getBillRepo.saveAll(billHeader.getBillDetailList());
 
-			getBillRepo.setBillDetailList(billDetList);
+			getBillRepo.getBillDetailList(billDetList);
 
 		} catch (Exception e) {
 
@@ -54,4 +54,3 @@ BillHeaderRepo getBillRepo;
 	}
 
 }
-*/
