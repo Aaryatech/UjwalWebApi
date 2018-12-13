@@ -1,11 +1,13 @@
 package com.ujwal.soft.models;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class BillHeader {
@@ -38,7 +40,16 @@ public class BillHeader {
 	private String ex_var2;
 	private float ex_float1;
 	private float ex_float2;
+	@Transient
+	List<BillDetails> billDetailList;
 	
+	
+	public List<BillDetails> getBillDetailList() {
+		return billDetailList;
+	}
+	public void setBillDetailList(List<BillDetails> billDetailList) {
+		this.billDetailList = billDetailList;
+	}
 	public int getBillHeaderId() {
 		return billHeaderId;
 	}
@@ -204,9 +215,9 @@ public class BillHeader {
 				+ sgstAmt + ", cgstAmt=" + cgstAmt + ", igstAmt=" + igstAmt + ", discAmt=" + discAmt + ", roundOff="
 				+ roundOff + ", totaTax=" + totaTax + ", grandTotal=" + grandTotal + ", status=" + status + ", remark="
 				+ remark + ", delStatus=" + delStatus + ", ex_int1=" + ex_int1 + ", ex_int2=" + ex_int2 + ", ex_var1="
-				+ ex_var1 + ", ex_var2=" + ex_var2 + ", ex_float1=" + ex_float1 + ", ex_float2=" + ex_float2 + "]";
-	}
-	
+				+ ex_var1 + ", ex_var2=" + ex_var2 + ", ex_float1=" + ex_float1 + ", ex_float2=" + ex_float2
+				+ ", billDetailList=" + billDetailList + "]";
+	}	
 	
 	
 }

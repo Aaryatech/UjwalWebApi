@@ -11,6 +11,7 @@ public class MTax {
 	@Id
 	private int taxId;
 	private String hsnCode;
+	private String taxDesc;
 	private float taxPer;
 	private float cgstPer;
 	private float sgstPer;
@@ -25,6 +26,13 @@ public class MTax {
 	}
 	public void setTaxId(int taxId) {
 		this.taxId = taxId;
+	}
+	
+	public String getTaxDesc() {
+		return taxDesc;
+	}
+	public void setTaxDesc(String taxDesc) {
+		this.taxDesc = taxDesc;
 	}
 	public String getHsnCode() {
 		return hsnCode;
@@ -88,9 +96,11 @@ public class MTax {
 	}
 	@Override
 	public String toString() {
-		return "MTax [taxId=" + taxId + ", hsnCode=" + hsnCode + ", taxPer=" + taxPer + ", cgstPer=" + cgstPer
-				+ ", sgstPer=" + sgstPer + ", igstPer=" + igstPer + ", cessPer=" + cessPer + ", delStatus=" + delStatus
-				+ ", exInt1=" + exInt1 + ", exInt2=" + exInt2 + ", exBool1=" + exBool1 + "]";
+		return "MTax [taxId=" + taxId + ", hsnCode=" + hsnCode + ", taxDesc=" + taxDesc + ", taxPer=" + taxPer
+				+ ", cgstPer=" + cgstPer + ", sgstPer=" + sgstPer + ", igstPer=" + igstPer + ", cessPer=" + cessPer
+				+ ", delStatus=" + delStatus + ", exInt1=" + exInt1 + ", exInt2=" + exInt2 + ", exBool1=" + exBool1
+				+ "]";
 	}
+	
 	
 }
