@@ -27,7 +27,7 @@ public class MGetPartApiController {
 	@RequestMapping(value = { "/getAllPartList" }, method = RequestMethod.GET)
 	public @ResponseBody List<MGetPart> getAllPartList() {
 		return getRepository.findByPartList();
-	
+	   
 	}
 	
 
