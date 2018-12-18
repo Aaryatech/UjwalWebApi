@@ -1,3 +1,4 @@
+
 package com.ujwal.soft.repositories;
 
 import java.util.List;
@@ -15,8 +16,9 @@ public interface MTaxRepo extends JpaRepository<MTax, Integer> {
 
 	@Query(value = "select * from m_tax where tax_id=:id",nativeQuery=true)
 	public MTax  getTaxById(@Param ("id") int id);
-
-	public List<MTax> findAllByDelStatus(int i);
+	
+	@Query(value = "SELECT * FROM m_tax WHERE del_status = 0 ORDER BY tax_id DESC",nativeQuery=true)
+	public List<MTax> findAllTax();
 
 
 	@Transactional

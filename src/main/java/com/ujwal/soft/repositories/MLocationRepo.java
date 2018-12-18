@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.ujwal.soft.models.MLocComp;
 import com.ujwal.soft.models.MLocation;
 
 @Repository
@@ -31,6 +32,5 @@ public interface MLocationRepo extends JpaRepository<MLocation, Integer> {
 	@Modifying
 	@Query(value = "UPDATE m_location SET del_status=1  WHERE location_id IN(:LocIds)",nativeQuery=true)
 	public int deleteMultiLocation(@Param("LocIds") List<Integer> LocIds);
-	
-	
+		
 }

@@ -14,7 +14,9 @@ import com.ujwal.soft.models.MCustomer;
 
 public interface MCustomerRepo extends JpaRepository<MCustomer, Integer>{
 
-	List<MCustomer> findAllByCustDelStatus(int i);
+	
+	@Query(value="SELECT * FROM `m_customer` WHERE cust_del_status=0 ORDER BY `cust_id` DESC",nativeQuery=true)
+	List<MCustomer> findAllByCustDelStatus();
 
 	MCustomer findByCustIdAndCustDelStatus(int id, int i);
 	@Transactional

@@ -29,7 +29,7 @@ public class MCustomerWebApiController {
 	
 	@RequestMapping(value="/getAllCustomer", method=RequestMethod.GET)
 	public@ResponseBody List<MCustomer> getAllCustomer(){
-		return mcustRepo.findAllByCustDelStatus(0);
+		return mcustRepo.findAllByCustDelStatus();
 		
 	}
 	

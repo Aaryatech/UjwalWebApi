@@ -1,3 +1,4 @@
+
 package com.ujwal.soft.webapi;
 
 import java.util.List;
@@ -29,7 +30,7 @@ public class MTaxWebApiController {
 	
 	@RequestMapping(value="/getAllTaxes", method=RequestMethod.GET)
 	public@ResponseBody List<MTax> getAllTaxes(){
-		return taxRepo.findAllByDelStatus(0);
+		return taxRepo.findAllTax();
 		
 	}
 	

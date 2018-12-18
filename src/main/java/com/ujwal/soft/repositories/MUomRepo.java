@@ -12,8 +12,9 @@ import org.springframework.data.repository.query.Param;
 import com.ujwal.soft.models.MUom;
 
 public interface MUomRepo extends JpaRepository<MUom, Integer> {
-
-	List<MUom> findAllByDelStatus(int i);
+	
+	@Query(value="SELECT * FROM m_uom WHERE del_status = 0 ORDER BY uom_id DESC",nativeQuery=true)
+	List<MUom> findAllUMom();
 	
 	MUom findByUomIdAndDelStatus(int uomId,int delStatus);
 
@@ -21,7 +22,7 @@ public interface MUomRepo extends JpaRepository<MUom, Integer> {
 	@Transactional
 	@Modifying
 	@Query(value="update m_uom set del_status = 1 where uom_id=:id",nativeQuery=true)
-	public int deleteTax(@Param("id") int id);
+	public int deltUMom(@Param("id") int id);
 
 	@Transactional
 	@Modifying

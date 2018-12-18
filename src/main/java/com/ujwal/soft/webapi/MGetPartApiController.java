@@ -16,8 +16,10 @@ import com.ujwal.soft.repositories.GetPartRepository;
 
 @RestController
 public class MGetPartApiController {
+	
 	@Autowired
 	private GetPartRepository getRepository;
+	
 	@RequestMapping(value = { "/GetPartInfo" }, method = RequestMethod.POST)
 	public @ResponseBody MGetPart getGetPartInfo(@RequestParam int id) {
 		MGetPart part = getRepository.findByPart(id);

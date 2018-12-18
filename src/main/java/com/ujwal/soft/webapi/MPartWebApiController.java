@@ -28,7 +28,7 @@ public class MPartWebApiController {
 	
 	@RequestMapping(value="/getAllPart", method=RequestMethod.GET)
 	public@ResponseBody List<MPart> getAllPart(){
-		return mpartRepo.findAllByPartDelStatus(0);
+		return mpartRepo.findAllPart();
 		
 	}
 	

@@ -22,8 +22,6 @@ public class MCustomer {
 	private String custRegisNo;
 	private String custRoNo;
 	private String custState;
-	
-	
 	private int custDelStatus;
 	private int exInt1;
 	private int exInt2;

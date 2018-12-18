@@ -16,15 +16,15 @@ import com.ujwal.soft.models.MCompany;
 @Repository
 public interface MCompanyRepo extends JpaRepository<MCompany, Integer>{
 
-	/*@Query(value="select * from m_company where comp_id=:id",nativeQuery=true)
-	public@ResponseBody MCompany getCompanyById(@Param("id") int id);
-	*/
+	@Query(value="select * from m_company where del_status=0 ORDER BY comp_id DESC",nativeQuery=true)
+	public List<MCompany> getAllCompanies();
+	
 	@Transactional
 	@Modifying
 	@Query(value="update m_company set del_status = 1 where comp_id=:id",nativeQuery=true)
 	public int deleteCompany(@Param("id") int id);
 
-	public List<MCompany> findAllByDelStatus(int i);
+	//public List<MCompany> findAllByDelStatus(int i);
 
 	public MCompany findByCompIdAndDelStatus(int compId, int delStatus);
 

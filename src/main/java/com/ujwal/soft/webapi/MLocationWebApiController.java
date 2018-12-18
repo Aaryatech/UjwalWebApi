@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ujwal.soft.models.Info;
 import com.ujwal.soft.models.MLocation;
+import com.ujwal.soft.repositories.MLocCompRepo;
 import com.ujwal.soft.repositories.MLocationRepo;
 
 @RestController
@@ -85,5 +86,13 @@ public class MLocationWebApiController {
 		return info;
 
 	}
+	
+	@Autowired
+	MLocCompRepo mlocCampRepo;
+	@RequestMapping(value = { "/getCompLoc" }, method = RequestMethod.GET)
+	public @ResponseBody List getCompLoc() {
+		return mlocCampRepo.getCompLoc();
+	}
+	
 	
 }

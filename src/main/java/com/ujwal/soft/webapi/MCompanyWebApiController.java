@@ -25,12 +25,11 @@ public class MCompanyWebApiController {
 	@RequestMapping(value="/addNewCompany", method=RequestMethod.POST)
 	public@ResponseBody MCompany addNewCompany(@RequestBody MCompany mcomp) {
 		return mcompRepo.save(mcomp);
-		
 	}
 	
 	@RequestMapping(value="/getAllCompanies", method=RequestMethod.GET)
 	public@ResponseBody List<MCompany> gtAllCompanies(){
-		return mcompRepo.findAllByDelStatus(0);
+		return mcompRepo.getAllCompanies();
 		
 	}
 	

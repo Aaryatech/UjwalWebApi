@@ -29,7 +29,7 @@ public class MUomWebApiController {
 	
 	@RequestMapping(value="/getAllMUom", method=RequestMethod.GET)
 	public@ResponseBody List<MUom> gtAllMUom(){
-		return umomRepo.findAllByDelStatus(0);
+		return umomRepo.findAllUMom();
 		
 	}
 	
@@ -39,11 +39,11 @@ public class MUomWebApiController {
 		
 	}
 	
-	@RequestMapping(value="/deleteTax", method=RequestMethod.POST)
+	@RequestMapping(value="/deleteUMom", method=RequestMethod.POST)
 	public @ResponseBody Info delUMom(@RequestParam int id) {
 		
 		Info info =new Info();
-		int isDelete = umomRepo.deleteTax(id);
+		int isDelete = umomRepo.deltUMom(id);
 		
 		if(isDelete!=0) {
 			info.setError(false);

@@ -13,7 +13,8 @@ import com.ujwal.soft.models.MPart;
 
 public interface MPartRepo extends JpaRepository<MPart, Integer> {
 
-	List<MPart> findAllByPartDelStatus(int i);
+	@Query(value="SELECT * FROM m_part WHERE part_del_status = 0 ORDER BY part_id DESC",nativeQuery=true)
+	List<MPart> findAllPart();
 
 	//int delPart(int id);
 
