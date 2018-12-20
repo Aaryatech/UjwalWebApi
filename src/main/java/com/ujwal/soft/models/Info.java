@@ -1,35 +1,28 @@
-
 package com.ujwal.soft.models;
 
-import javax.persistence.Entity;
-
-
 public class Info {
+	private String message;
+	private boolean isError;
 
-	
-    private String message;
-    
-    private Boolean error;
+	public String getMessage() {
+		return message;
+	}
 
-    public String getMessage() {
-        return message;
-    }
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+	public boolean isError() {
+		return isError;
+	}
 
-    public Boolean getError() {
-        return error;
-    }
-
-    public void setError(Boolean error) {
-        this.error = error;
-    }
+	public void setError(boolean isError) {
+		this.isError = isError;
+	}
 
 	@Override
 	public String toString() {
-		return "Info [message=" + message + ", error=" + error + "]";
+		return "Info [message=" + message + ", isError=" + isError + "]";
 	}
 
 }

@@ -1,7 +1,5 @@
 package com.ujwal.soft.webapi;
 
-
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,54 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.ujwal.soft.models.BillDetails;
-import com.ujwal.soft.models.BillHeader;
 import com.ujwal.soft.models.Document;
 import com.ujwal.soft.models.Info;
-import com.ujwal.soft.repositories.BillDetailRepo;
-import com.ujwal.soft.repositories.BillHeaderRepo;
 import com.ujwal.soft.repositories.DocumentRepo;
 
-@RestController
-public class BillHeaderWebApiController {
+
+public class ujwalDocumentController {
 	
-	@Autowired 
-BillHeaderRepo getBillRepo;
-	@Autowired 
-	BillDetailRepo getDetailRepo;
 	@Autowired
 	DocumentRepo getDocumentRepo;
-
-	
-	@RequestMapping(value = { "/saveBill" }, method = RequestMethod.POST)
-	public @ResponseBody BillHeader saveBill(@RequestBody BillHeader billHeader) {
-
-		System.err.println("header body " + billHeader.toString());
-
-		BillHeader billRes = null;
-		//BillDetails billDetails=null;
-
-		try {
-			billRes = getBillRepo.save(billHeader);
-
-			for (int i = 0; i < billHeader.getBillDetailList().size(); i++) 
-			{
-				billHeader.getBillDetailList().get(i).setBillHeaderId(billRes.getBillHeaderId());
-			}
-			List<BillDetails> billDetList = getDetailRepo.saveAll(billHeader.getBillDetailList());
-			billRes.setBillDetailList(billDetList);
-		} 
-		catch (Exception e) 
-		{
-			System.err.println("exce in saving order head and detail " + e.getMessage());
-			e.printStackTrace();
-		}
-		System.err.println("Bill " + billRes.toString());
-		return billRes;
-	}
-
 	@RequestMapping(value = { "/saveDocument" }, method = RequestMethod.POST)
 	public @ResponseBody Document saveDocument(@RequestBody Document document) {
 
@@ -103,13 +63,13 @@ BillHeaderRepo getBillRepo;
 
 		Document doc = new Document();
 
-		DateFormat dateFormat = new SimpleDateFormat("2018-12-31");
+		DateFormat dateFormat = new SimpleDateFormat("2018-02-11");
 		String curDate = dateFormat.format(new Date());
 
 		try {
 
 			doc = getDocumentRepo.getDocuData(docCode, curDate);
-			//System.err.println("getting doc " + doc.toString());
+			System.err.println("getting doc " + doc.toString());
 
 		} catch (Exception e) {
 			System.err.println("Exc in  /getDocument" + e.getMessage());
@@ -147,5 +107,4 @@ BillHeaderRepo getBillRepo;
 		return info;
 
 	}
-
 }
