@@ -9,6 +9,8 @@ import com.ujwal.soft.models.BillHeader;
 
 public interface BillHeaderRepo extends JpaRepository<BillHeader, Integer>{
 
+	BillHeader findByBillHeaderIdAndDelStatus(int billHeadId, int i);
+
 	//void getBillDetailList(List<BillDetails> billDetList);
 
 

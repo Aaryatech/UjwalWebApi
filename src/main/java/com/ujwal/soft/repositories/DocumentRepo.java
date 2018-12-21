@@ -14,7 +14,7 @@ import com.ujwal.soft.models.Document;
 public interface DocumentRepo extends JpaRepository<Document, Integer> {
 
 	@Query(value = "SELECT * FROM m_document  "
-			+ " WHERE doc_code =:docCode AND del_status=1 AND :curDate BETWEEN from_date AND to_date ", nativeQuery = true)
+			+ " WHERE doc_code =:docCode AND del_status=0 AND :curDate BETWEEN from_date AND to_date ", nativeQuery = true)
 	Document getDocuData(@Param("docCode") int docCode, @Param("curDate") String curDate);
 
 	@Transactional

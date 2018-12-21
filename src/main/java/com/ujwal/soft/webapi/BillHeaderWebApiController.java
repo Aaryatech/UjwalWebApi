@@ -19,22 +19,29 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ujwal.soft.models.BillDetails;
 import com.ujwal.soft.models.BillHeader;
 import com.ujwal.soft.models.Document;
+import com.ujwal.soft.models.GetBillDetail;
+import com.ujwal.soft.models.GetBillHeader;
 import com.ujwal.soft.models.Info;
 import com.ujwal.soft.repositories.BillDetailRepo;
 import com.ujwal.soft.repositories.BillHeaderRepo;
 import com.ujwal.soft.repositories.DocumentRepo;
+import com.ujwal.soft.repositories.GetBillDetailRepository;
+import com.ujwal.soft.repositories.GetBillHeaderRepository;
 
 @RestController
 public class BillHeaderWebApiController {
 	
 	@Autowired 
-BillHeaderRepo getBillRepo;
+    BillHeaderRepo getBillRepo;
 	@Autowired 
 	BillDetailRepo getDetailRepo;
 	@Autowired
 	DocumentRepo getDocumentRepo;
+    @Autowired
+    GetBillHeaderRepository getBillHeaderRepository;
+    @Autowired
+    GetBillDetailRepository getBillDetailRepository;
 
-	
 	@RequestMapping(value = { "/saveBill" }, method = RequestMethod.POST)
 	public @ResponseBody BillHeader saveBill(@RequestBody BillHeader billHeader) {
 
@@ -147,5 +154,65 @@ BillHeaderRepo getBillRepo;
 		return info;
 
 	}
+	@RequestMapping(value = { "/getBillHeadersByDate" }, method = RequestMethod.POST)
+	public @ResponseBody List<GetBillHeader> getBillHeadersByDate(@RequestParam("custId")int custId,@RequestParam("fromDate") String fromDate,@RequestParam("toDate") String toDate) {
 
+
+		List<GetBillHeader> billHeaderRes = null;
+
+		try {
+
+			billHeaderRes = getBillHeaderRepository.getBillHeadersByDate(custId,fromDate,toDate);
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return billHeaderRes;
+
+	}
+	@RequestMapping(value = { "/getBillHeaderById" }, method = RequestMethod.POST)
+	public @ResponseBody GetBillHeader getBillHeaderById(@RequestParam("billHeadId")int billHeadId) {
+
+
+		GetBillHeader billHeaderRes = null;
+
+		try {
+
+			billHeaderRes = getBillHeaderRepository.getBillHeaderById(billHeadId);
+			List<GetBillDetail> detailList=getBillDetailRepository.getBillDetailByHeaderId(billHeadId);
+			billHeaderRes.setGetBillDetail(detailList);
+			System.err.println(detailList.toString()+"detailList");
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return billHeaderRes;
+
+	}
+	@RequestMapping(value = { "/getBillHeaderByHeaderId" }, method = RequestMethod.POST)
+	public @ResponseBody BillHeader getBillHeaderByHeaderId(@RequestParam("billHeadId")int billHeadId) {
+
+
+		BillHeader billHeaderRes = null;
+
+		try {
+
+			billHeaderRes = getBillRepo.findByBillHeaderIdAndDelStatus(billHeadId,0);
+			List<BillDetails> detailList=getDetailRepo.findByBillHeaderIdAndDelStatus(billHeadId,0);
+			billHeaderRes.setBillDetailList(detailList);
+			System.err.println(detailList.toString()+"detailList");
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return billHeaderRes;
+
+	}
 }

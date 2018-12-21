@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="bill_header")
 public class BillHeader {
@@ -67,6 +69,7 @@ public class BillHeader {
 	public Date getBillDate() {
 		return billDate;
 	}
+	@JsonFormat(locale = "hi",timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy")
 	public void setBillDate(Date billDate) {
 		this.billDate = billDate;
 	}

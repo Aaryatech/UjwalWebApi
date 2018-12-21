@@ -63,7 +63,7 @@ public class ujwalDocumentController {
 
 		Document doc = new Document();
 
-		DateFormat dateFormat = new SimpleDateFormat("2018-02-11");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String curDate = dateFormat.format(new Date());
 
 		try {
