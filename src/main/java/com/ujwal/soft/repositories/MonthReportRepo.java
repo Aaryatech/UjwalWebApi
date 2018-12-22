@@ -1,4 +1,4 @@
-package com.ujwal.soft.repositories;
+/*package com.ujwal.soft.repositories;
 
 import java.util.List;
 
@@ -16,3 +16,4 @@ public interface MonthReportRepo extends JpaRepository<MonthlyReport, Integer>{
 	List<MonthlyReport> getMonthwiseReport(@Param("fromDate") String fromDate, @Param("toDate") String toDate);
 
 }
+*/

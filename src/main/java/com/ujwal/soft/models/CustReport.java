@@ -29,6 +29,8 @@ public class CustReport {
 	private float discAmt;
 	private String userName;
 	private String custGstn;
+
+	
 	public int getBillHeaderId() {
 		return billHeaderId;
 	}
