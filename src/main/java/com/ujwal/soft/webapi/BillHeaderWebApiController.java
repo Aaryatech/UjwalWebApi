@@ -69,6 +69,32 @@ public class BillHeaderWebApiController {
 		return billRes;
 	}
 
+@RequestMapping(value = { "/findBillsByHeaderId" }, method = RequestMethod.POST)
+public @ResponseBody List<GetBillHeader> findBillsByHeaderId(@RequestParam("billTempIds")List<Integer> billHeadIdList) {
+
+
+	List<GetBillHeader> billHeaderRes = null;
+
+	try {
+		
+		billHeaderRes = getBillHeaderRepository.findBillsByHeaderId(billHeadIdList);
+		
+		for(int i=0;i<billHeaderRes.size();i++)
+		{
+			List<GetBillDetail>	billDetailList = getBillDetailRepository.getBillDetailByHeaderId(billHeaderRes.get(i).getBillHeaderId());
+		   System.err.println(billDetailList+"billDetailList");
+			billHeaderRes.get(i).setGetBillDetail(billDetailList);
+		}
+		 System.err.println(billHeaderRes.toString()+"billHeaderRes");
+	} catch (Exception e) {
+
+		e.printStackTrace();
+
+	}
+
+	return billHeaderRes;
+
+}
 	@RequestMapping(value = { "/saveDocument" }, method = RequestMethod.POST)
 	public @ResponseBody Document saveDocument(@RequestBody Document document) {
 
