@@ -1,5 +1,7 @@
 package com.ujwal.soft.webapi;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +21,16 @@ public class MUserWebApiController {
 
 	@Autowired MUserRepo muser;
 	
+	@RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
+	public @ResponseBody List<MUser> getAllUserList(){
+		return muser.findAllByDelStatus(0);
+		
+	}
+	
 	@RequestMapping(value = "/getUserById", method = RequestMethod.POST)
 	public@ResponseBody MUser getUserDetailById(@RequestParam int id) {
 		
-		return muser.findUserById(id);
+		return muser.findByUserIdAndDelStatus(id,0);
 		
 	}
 	
@@ -80,20 +88,31 @@ public class MUserWebApiController {
 	
 	
 	
-	/*public @ResponseBody CradentialValidator validateLogin(@RequestParam String mobile, @RequestParam String password) {
-	
-		String flag = muser.validateCredentials(mobile, password);
+	@RequestMapping(value = { "/deleteMultiUser" }, method = RequestMethod.POST)
+	public @ResponseBody Info deleteMultiLocation(@RequestParam("userIds") List<Integer> userIds) {
 		
-		CradentialValidator cv = new CradentialValidator();
-		if(flag!=null) {
-			cv.getMusr();
+		Info info = new Info();
+
+		try {
+			int delete = muser.deleteMultiUsers(userIds);
+
+			if (delete >= 1) {
+				info.setError(false);
+				info.setMessage("successfully Multiple Deleted");
+			} else {
+				info.setError(true);
+				info.setMessage(" Deleted to Delete");
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			info.setError(true);
+			info.setMessage(" Deleted to Delete");
+
 		}
-		else {
-			cv.getInfo();
-		}
-		
-		return cv;
-		
-	}*/
+		return info;
+
+	}
 
 }
