@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class CustReport {
 	@Id
@@ -37,6 +39,7 @@ public class CustReport {
 	public void setBillHeaderId(int billHeaderId) {
 		this.billHeaderId = billHeaderId;
 	}
+	@JsonFormat(locale = "hi",timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy")
 	public String getBillDate() {
 		return billDate;
 	}
