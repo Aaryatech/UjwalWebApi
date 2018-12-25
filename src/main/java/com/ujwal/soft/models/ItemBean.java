@@ -12,6 +12,7 @@ public class ItemBean {
 	private int partId;
 	private String partName;
 	private String hsnCode;
+	
 	private float cgst;
 	private float sgst;
 	private float igst;	
