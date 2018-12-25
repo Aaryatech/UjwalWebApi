@@ -12,15 +12,16 @@ public class MCustomer {
 	@Id
 	private int custId;
 	private String custName;
+	private int compId; 
 	private String custAddress;
 	private String custPhone;
 	private String custGstn;
 	private String custPan;
 	private String custEmail;
 	private String custVehNo;
-	private String custChasiNo;
+	private String custVinNo;
 	private String custRegisNo;
-	private String custRoNo;
+	private String custModelNo;
 	private String custState;
 	private int custDelStatus;
 	private int exInt1;
@@ -52,6 +53,12 @@ public class MCustomer {
 	}
 	public void setCustName(String custName) {
 		this.custName = custName;
+	}
+	public int getCompId() {
+		return compId;
+	}
+	public void setCompId(int compId) {
+		this.compId = compId;
 	}
 	public String getCustAddress() {
 		return custAddress;
@@ -90,23 +97,24 @@ public class MCustomer {
 	public void setCustVehNo(String custVehNo) {
 		this.custVehNo = custVehNo;
 	}
-	public String getCustChasiNo() {
-		return custChasiNo;
-	}
-	public void setCustChasiNo(String custChasiNo) {
-		this.custChasiNo = custChasiNo;
-	}
 	public String getCustRegisNo() {
 		return custRegisNo;
 	}
 	public void setCustRegisNo(String custRegisNo) {
 		this.custRegisNo = custRegisNo;
 	}
-	public String getCustRoNo() {
-		return custRoNo;
+	
+	public String getCustVinNo() {
+		return custVinNo;
 	}
-	public void setCustRoNo(String custRoNo) {
-		this.custRoNo = custRoNo;
+	public void setCustVinNo(String custVinNo) {
+		this.custVinNo = custVinNo;
+	}
+	public String getCustModelNo() {
+		return custModelNo;
+	}
+	public void setCustModelNo(String custModelNo) {
+		this.custModelNo = custModelNo;
 	}
 	public int getCustDelStatus() {
 		return custDelStatus;
@@ -176,14 +184,15 @@ public class MCustomer {
 	}
 	@Override
 	public String toString() {
-		return "MCustomer [custId=" + custId + ", custName=" + custName + ", custAddress=" + custAddress
-				+ ", custPhone=" + custPhone + ", custGstn=" + custGstn + ", custPan=" + custPan + ", custEmail="
-				+ custEmail + ", custVehNo=" + custVehNo + ", custChasiNo=" + custChasiNo + ", custRegisNo="
-				+ custRegisNo + ", custRoNo=" + custRoNo + ", custState=" + custState + ", custDelStatus="
-				+ custDelStatus + ", exInt1=" + exInt1 + ", exInt2=" + exInt2 + ", exInt3=" + exInt3 + ", extVar1="
-				+ extVar1 + ", extVar2=" + extVar2 + ", extVar3=" + extVar3 + ", exBool1=" + exBool1 + ", exBool2="
-				+ exBool2 + ", exDate1=" + exDate1 + ", exDate2=" + exDate2 + "]";
+		return "MCustomer [custId=" + custId + ", custName=" + custName + ", compId=" + compId + ", custAddress="
+				+ custAddress + ", custPhone=" + custPhone + ", custGstn=" + custGstn + ", custPan=" + custPan
+				+ ", custEmail=" + custEmail + ", custVehNo=" + custVehNo + ", custVinNo=" + custVinNo
+				+ ", custRegisNo=" + custRegisNo + ", custModelNo=" + custModelNo + ", custState=" + custState
+				+ ", custDelStatus=" + custDelStatus + ", exInt1=" + exInt1 + ", exInt2=" + exInt2 + ", exInt3="
+				+ exInt3 + ", extVar1=" + extVar1 + ", extVar2=" + extVar2 + ", extVar3=" + extVar3 + ", exBool1="
+				+ exBool1 + ", exBool2=" + exBool2 + ", exDate1=" + exDate1 + ", exDate2=" + exDate2 + "]";
 	}
+	
 	
 	
 }

@@ -19,9 +19,9 @@ public class MGetCustomerDetails {
 	private String custPan;*/
 	private String custEmail;
 	private String custVehNo;
-	private String custChasiNo;
+	private String custVinNo;
 	private String custRegisNo;
-	private String custRoNo;
+	private String custModelNo;
 	//private String custState;
 	private int custDelStatus;
 	
@@ -95,23 +95,25 @@ public class MGetCustomerDetails {
 	public void setCustVehNo(String custVehNo) {
 		this.custVehNo = custVehNo;
 	}
-	public String getCustChasiNo() {
-		return custChasiNo;
-	}
-	public void setCustChasiNo(String custChasiNo) {
-		this.custChasiNo = custChasiNo;
-	}
+	
 	public String getCustRegisNo() {
 		return custRegisNo;
 	}
 	public void setCustRegisNo(String custRegisNo) {
 		this.custRegisNo = custRegisNo;
 	}
-    public String getCustRoNo() {
-		return custRoNo;
+   
+	public String getCustVinNo() {
+		return custVinNo;
 	}
-	public void setCustRoNo(String custRoNo) {
-		this.custRoNo = custRoNo;
+	public void setCustVinNo(String custVinNo) {
+		this.custVinNo = custVinNo;
+	}
+	public String getCustModelNo() {
+		return custModelNo;
+	}
+	public void setCustModelNo(String custModelNo) {
+		this.custModelNo = custModelNo;
 	}
 	public int getCustDelStatus() {
 		return custDelStatus;

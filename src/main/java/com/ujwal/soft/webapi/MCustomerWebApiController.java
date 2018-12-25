@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ujwal.soft.models.Info;
 import com.ujwal.soft.models.MCompany;
 import com.ujwal.soft.models.MCustomer;
+import com.ujwal.soft.models.MGetCustomerDetails;
+import com.ujwal.soft.repositories.CustomersDetails;
 import com.ujwal.soft.repositories.MCustomerRepo;
 
 @RestController
@@ -83,5 +85,19 @@ public class MCustomerWebApiController {
 		}
 		return info;
 
+	}
+	
+	@Autowired
+	CustomersDetails customerDetail;
+	@RequestMapping(value="/getAllCustomerDetails", method=RequestMethod.GET)
+	public@ResponseBody List<MGetCustomerDetails> getAllCustomerDetails(){
+		return customerDetail.findAllCustomerByDelStatus();
+		
+	}
+	
+	@RequestMapping(value="/getCustomerByCompId", method=RequestMethod.POST)
+	public@ResponseBody List<MCustomer> getCustomerByCompId(@RequestParam int id){
+		return mcustRepo.findAllCustomerByCustDelStatusAndCompId(0, id);
+		
 	}
 }

@@ -29,6 +29,8 @@ public interface MCustomerRepo extends JpaRepository<MCustomer, Integer>{
 	@Query(value="update m_customer set cust_del_status = 1 where cust_id IN(:custIds)",nativeQuery=true)
 	int deleteMultiCompany(@Param("custIds") List<Integer> custIds);
 
-	//int deleteCustomer(int id);
+	List<MCustomer> findAllCustomerByCustDelStatusAndCompId(int i, int id);
+
+
 
 }
