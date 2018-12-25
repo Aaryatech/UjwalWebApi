@@ -10,24 +10,30 @@ import com.ujwal.soft.models.BillDetails;
 import com.ujwal.soft.models.ItemBean;
 
 public interface ItemRepo extends JpaRepository<ItemBean, Integer>{
-	@Query(value = "SELECT part.part_id, part.part_name,part.part_tax_id, tax.hsn_code, sum(bill.cgst_rs) AS cgst_rs , sum(bill.sgst_rs) AS sgst_rs, sum(bill.igst_rs) AS igst_rs,bill.taxable_amount, billhead.bill_header_id\r\n" + 
-			"FROM m_part part, bill_details bill, m_tax tax, bill_header billhead\r\n" + 
-			"WHERE tax.tax_id=part.part_tax_id AND\r\n" + 
-			"bill.bill_header_id= billhead.bill_header_id AND \r\n" + 
-			"bill.part_id=part.part_id AND\r\n" + 
-			" billhead.bill_date >= :fromDate AND billhead.bill_date <= :toDate AND\r\n" + 
-			" bill.part_id=:itemId GROUP BY bill.part_id",nativeQuery=true)
+	@Query(value = "select d.bill_detail_id, d.part_id, p.part_name,t.hsn_code,t.cgst_per,t.sgst_per,t.igst_per,\r\n" + 
+			"h.cust_id, c.cust_name, h.bill_date, sum(d.qty) as qty,sum(cgst_amt) as cgst,sum(sgst_amt) as sgst, \r\n" + 
+			"sum(igst_amt) as igst,sum(taxable_amt) as taxable_amt,sum(total_tax)as total_tax, sum(d.grand_total) as grand_total\r\n" + 
+			"from bill_header h ,bill_details d, m_part p, m_customer c,m_tax t WHERE h.bill_date BETWEEN :fromDate AND :toDate \r\n" + 
+			"AND d.part_id=p.part_id AND h.bill_header_id=d.bill_header_id AND h.cust_id IN(itemId) AND h.cust_id=c.cust_id \r\n" + 
+			"and t.tax_id=p.part_tax_id GROUP BY h.bill_date, d.part_id",nativeQuery=true)
+	
 	public List<ItemBean> getItemByDateAndId(@Param("itemId") int itemId, @Param("fromDate") String fromDate,
 			@Param("toDate") String toDate);
 	
 
 
-	@Query(value = "SELECT part.part_id, part.part_name,part.part_tax_id, tax.hsn_code, sum(bill.cgst_rs) AS cgst_rs , sum(bill.sgst_rs) AS sgst_rs, sum(bill.igst_rs) AS igst_rs,bill.taxable_amount, billhead.bill_header_id\r\n" + 
-			"FROM m_part part, bill_details bill, m_tax tax, bill_header billhead\r\n" + 
-			"WHERE tax.tax_id=part.part_tax_id AND\r\n" + 
-			"bill.bill_header_id= billhead.bill_header_id AND \r\n" + 
-			"bill.part_id=part.part_id AND\r\n" + 
-			" billhead.bill_date >= :fromDate AND billhead.bill_date <= :toDate GROUP BY bill.part_id",nativeQuery=true)
+	@Query(value = "select d.bill_detail_id, d.part_id, p.part_name,t.hsn_code,t.cgst_per,t.sgst_per,t.igst_per,\r\n" + 
+			"h.cust_id, c.cust_name, h.bill_date, sum(d.qty) as qty,sum(cgst_amt) as cgst,sum(sgst_amt) as sgst, \r\n" + 
+			"sum(igst_amt) as igst,sum(taxable_amt) as taxable_amt,sum(total_tax)as total_tax, sum(d.grand_total) as grand_total\r\n" + 
+			"from bill_header h ,bill_details d, m_part p, m_customer c,m_tax t WHERE h.bill_date BETWEEN :fromDate AND :toDate \r\n" + 
+			"AND d.part_id=p.part_id AND h.bill_header_id=d.bill_header_id AND h.cust_id=c.cust_id \r\n" + 
+			"and t.tax_id=p.part_tax_id GROUP BY h.bill_date, d.part_id",nativeQuery=true)
 	public List<ItemBean> getItemByDate(@Param("fromDate") String fromDate,
 			@Param("toDate") String toDate);
 }
+/*select d.bill_detail_id, d.part_id, p.part_name,t.hsn_code,t.cgst_per,t.sgst_per,t.igst_per,
+h.cust_id, c.cust_name, h.bill_date, sum(d.qty) as qty,sum(cgst_amt) as cgst,sum(sgst_amt) as sgst, 
+sum(igst_amt) as igst,sum(taxable_amt) as taxable_amt,sum(total_tax)as total_tax, sum(d.grand_total) as grand_total
+from bill_header h ,bill_details d, m_part p, m_customer c,m_tax t WHERE h.bill_date BETWEEN '2018-12-01' AND '2018-12-21' 
+AND d.part_id=p.part_id AND h.bill_header_id=d.bill_header_id AND h.cust_id IN(9) AND h.cust_id=c.cust_id 
+and t.tax_id=p.part_tax_id GROUP BY h.bill_date, d.part_id*/

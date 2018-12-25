@@ -23,7 +23,7 @@ public class ItemReportWebApi {
 	@Autowired ItemRepo itemRepo;
 	
 	@RequestMapping(value = "/getItemsBetweenDate", method=RequestMethod.POST)
-	public @ResponseBody List<ItemBean>  getItemById(@RequestParam("itemId") int itemId, @RequestParam("fromDate") String fromDate,
+	public @ResponseBody List<ItemBean>  getItemsBetweenDate(@RequestParam("itemId") int itemId, @RequestParam("fromDate") String fromDate,
 			@RequestParam("toDate") String toDate){
 		
 		List<ItemBean> itemList=null;
