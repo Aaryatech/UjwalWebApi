@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ujwal.soft.models.Info;
 import com.ujwal.soft.models.MCompany;
 import com.ujwal.soft.models.MPart;
+import com.ujwal.soft.models.MPartList;
 import com.ujwal.soft.repositories.MCompanyRepo;
+import com.ujwal.soft.repositories.MPartDetails;
 import com.ujwal.soft.repositories.MPartRepo;
 @RestController
 @RequestMapping("/ujwal")
@@ -81,5 +83,13 @@ public class MPartWebApiController {
 		}
 		return info;
 
+	}
+	
+	@Autowired
+	MPartDetails partDetail;
+	@RequestMapping(value="/getAllPartDetails", method=RequestMethod.GET)
+	@ResponseBody List<MPartList> getAllPartDetails(){
+		return partDetail.getAllPartDetail();
+		
 	}
 }

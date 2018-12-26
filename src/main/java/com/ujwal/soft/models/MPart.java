@@ -11,6 +11,7 @@ import javax.persistence.Table;
 public class MPart {
 	@Id
 	private int partId;
+	private int compId;
 	private String partName;
 	private String partNo;
 	private String partRegisterNo;
@@ -31,9 +32,19 @@ public class MPart {
 	private boolean exBool2;
 	private Date exDate1;
 	private Date exDate2;
+	
 	public int getPartId() {
 		return partId;
 	}
+	
+	public int getCompId() {
+		return compId;
+	}
+
+	public void setCompId(int compId) {
+		this.compId = compId;
+	}
+
 	public void setPartId(int partId) {
 		this.partId = partId;
 	}
@@ -153,24 +164,17 @@ public class MPart {
 	public void setExDate2(Date exDate2) {
 		this.exDate2 = exDate2;
 	}
+
 	@Override
 	public String toString() {
-		return "MPart [partId=" + partId + ", partName=" + partName + ", partNo=" + partNo + ", partRegisterNo="
-				+ partRegisterNo + ", partUomId=" + partUomId + ", partSpecification=" + partSpecification
-				+ ", partTaxId=" + partTaxId + ", partRoNo=" + partRoNo + ", partMrp=" + partMrp + ", partDelStatus="
-				+ partDelStatus + ", exInt1=" + exInt1 + ", exInt2=" + exInt2 + ", exInt3=" + exInt3 + ", extVar1="
-				+ extVar1 + ", extVar2=" + extVar2 + ", extVar3=" + extVar3 + ", exBool1=" + exBool1 + ", exBool2="
-				+ exBool2 + ", exDate1=" + exDate1 + ", exDate2=" + exDate2 + ", getPartId()=" + getPartId()
-				+ ", getPartName()=" + getPartName() + ", getPartNo()=" + getPartNo() + ", getPartRegisterNo()="
-				+ getPartRegisterNo() + ", getPartUomId()=" + getPartUomId() + ", getPartSpecification()="
-				+ getPartSpecification() + ", getPartTaxId()=" + getPartTaxId() + ", getPartRoNo()=" + getPartRoNo()
-				+ ", getPartMrp()=" + getPartMrp() + ", getPartDelStatus()=" + getPartDelStatus() + ", getExInt1()="
-				+ getExInt1() + ", getExInt2()=" + getExInt2() + ", getExInt3()=" + getExInt3() + ", getExtVar1()="
-				+ getExtVar1() + ", getExtVar2()=" + getExtVar2() + ", getExtVar3()=" + getExtVar3() + ", isExBool1()="
-				+ isExBool1() + ", isExBool2()=" + isExBool2() + ", getExDate1()=" + getExDate1() + ", getExDate2()="
-				+ getExDate2() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+		return "MPart [partId=" + partId + ", compId=" + compId + ", partName=" + partName + ", partNo=" + partNo
+				+ ", partRegisterNo=" + partRegisterNo + ", partUomId=" + partUomId + ", partSpecification="
+				+ partSpecification + ", partTaxId=" + partTaxId + ", partRoNo=" + partRoNo + ", partMrp=" + partMrp
+				+ ", partDelStatus=" + partDelStatus + ", exInt1=" + exInt1 + ", exInt2=" + exInt2 + ", exInt3="
+				+ exInt3 + ", extVar1=" + extVar1 + ", extVar2=" + extVar2 + ", extVar3=" + extVar3 + ", exBool1="
+				+ exBool1 + ", exBool2=" + exBool2 + ", exDate1=" + exDate1 + ", exDate2=" + exDate2 + "]";
 	}
+	
 	
 	
 }
