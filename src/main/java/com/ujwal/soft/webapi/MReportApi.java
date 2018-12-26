@@ -17,6 +17,7 @@ import com.ujwal.soft.models.CustReport;
 import com.ujwal.soft.models.MonthlyReport;
 import com.ujwal.soft.repositories.GetBillReportRepo;
 import com.ujwal.soft.repositories.GetCustReportRepo;
+import com.ujwal.soft.repositories.GetMonthlyReportRepo;
 
 @Controller
 public class MReportApi {
@@ -24,9 +25,9 @@ public class MReportApi {
 	GetBillReportRepo getBillReportReportrepo;
 	@Autowired
 	GetCustReportRepo getCustReportRepo;
-	/*@Autowired
+	@Autowired
 	GetMonthlyReportRepo getmonthlyReportReportrepo;
-	*/
+	
 	@RequestMapping(value = { "/getContractorBetweenDate" }, method = RequestMethod.POST)
 	public @ResponseBody List<CompReport> getContractorBetweenDate(@RequestParam("fromDate") String fromDate,
 			@RequestParam("toDate") String toDate ,@RequestParam("compId") int compId ) {
@@ -68,12 +69,12 @@ public class MReportApi {
 		return headerList;
 
 	}
-/*
+
 
 	@RequestMapping(value = { "/getMonthlyBetweenDate" }, method = RequestMethod.POST)
 	public @ResponseBody List<MonthlyReport> getMonthlyBetweenDate(@RequestParam("fromDate") String fromDate,
 			@RequestParam("toDate") String toDate ,@RequestParam("compId") int compId ) {
-          System.out.println("aZSxdcfgvbhjnmk");
+    //      System.out.println("aZSxdcfgvbhjnmk");
 		List<MonthlyReport> headerList = new ArrayList<MonthlyReport>();
 
 		try {
@@ -89,5 +90,5 @@ public class MReportApi {
 		}
 		return headerList;
 
-	}*/
+	}
 }
