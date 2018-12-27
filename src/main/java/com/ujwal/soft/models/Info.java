@@ -2,6 +2,7 @@ package com.ujwal.soft.models;
 
 public class Info {
 	private String message;
+	
 	private boolean isError;
 
 	public String getMessage() {
