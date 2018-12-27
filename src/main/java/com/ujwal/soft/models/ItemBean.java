@@ -8,7 +8,6 @@ public class ItemBean {
 	
 	@Id
 	private int billDetailId;
-	private int billHeaderId;
 	private int partId;
 	private String partName;
 	private String hsnCode;
@@ -18,28 +17,15 @@ public class ItemBean {
 	private float igst;	
 	private float qty;
 	private float totalTax;
-	private float taxPer;
 	private float taxableAmount;
 	
-	
-	public float getTaxPer() {
-		return taxPer;
-	}
-	public void setTaxPer(float taxPer) {
-		this.taxPer = taxPer;
-	}
 	public int getBillDetailId() {
 		return billDetailId;
 	}
 	public void setBillDetailId(int billDetailId) {
 		this.billDetailId = billDetailId;
 	}
-	public int getBillHeaderId() {
-		return billHeaderId;
-	}
-	public void setBillHeaderId(int billHeaderId) {
-		this.billHeaderId = billHeaderId;
-	}
+
 	public int getPartId() {
 		return partId;
 	}
@@ -96,9 +82,9 @@ public class ItemBean {
 	}
 	@Override
 	public String toString() {
-		return "ItemBean [billDetailId=" + billDetailId + ", billHeaderId=" + billHeaderId + ", partId=" + partId
+		return "ItemBean [billDetailId=" + billDetailId + ", partId=" + partId
 				+ ", partName=" + partName + ", hsnCode=" + hsnCode + ", cgst=" + cgst + ", sgst=" + sgst + ", igst="
-				+ igst + ", qty=" + qty + ", totalTax=" + totalTax + ", taxPer=" + taxPer + ", taxableAmount="
+				+ igst + ", qty=" + qty + ", totalTax=" + totalTax + ", taxPer= , taxableAmount="
 				+ taxableAmount + "]";
 	}
 	
