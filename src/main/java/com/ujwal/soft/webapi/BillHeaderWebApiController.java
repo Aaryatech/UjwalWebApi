@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ujwal.soft.models.BillDetails;
 import com.ujwal.soft.models.BillHeader;
+import com.ujwal.soft.models.BillReport;
 import com.ujwal.soft.models.Document;
 import com.ujwal.soft.models.GetBillDetail;
 import com.ujwal.soft.models.GetBillHeader;
 import com.ujwal.soft.models.Info;
 import com.ujwal.soft.repositories.BillDetailRepo;
 import com.ujwal.soft.repositories.BillHeaderRepo;
+import com.ujwal.soft.repositories.BillReportRepo;
 import com.ujwal.soft.repositories.DocumentRepo;
 import com.ujwal.soft.repositories.GetBillDetailRepository;
 import com.ujwal.soft.repositories.GetBillHeaderRepository;
@@ -41,6 +43,9 @@ public class BillHeaderWebApiController {
     GetBillHeaderRepository getBillHeaderRepository;
     @Autowired
     GetBillDetailRepository getBillDetailRepository;
+    @Autowired
+    BillReportRepo billRepo;
+ 
 
 	@RequestMapping(value = { "/saveBill" }, method = RequestMethod.POST)
 	public @ResponseBody BillHeader saveBill(@RequestBody BillHeader billHeader) {
@@ -181,15 +186,15 @@ public @ResponseBody List<GetBillHeader> findBillsByHeaderId(@RequestParam("bill
 
 	}
 	@RequestMapping(value = { "/getBillHeadersByDate" }, method = RequestMethod.POST)
-	public @ResponseBody List<GetBillHeader> getBillHeadersByDate(@RequestParam("custId")int custId,@RequestParam("fromDate") String fromDate,@RequestParam("toDate") String toDate) {
+	public @ResponseBody List<BillReport> getBillHeadersByDate(@RequestParam("custId")int custId,@RequestParam("fromDate") String fromDate,@RequestParam("toDate") String toDate) {
 
 
-		List<GetBillHeader> billHeaderRes = null;
+		List<BillReport> billHeaderRes = null;
 
 		try {
 
-			billHeaderRes = getBillHeaderRepository.getBillHeadersByDate(custId,fromDate,toDate);
-
+			billHeaderRes = billRepo.getBillHeadersByDate(custId,fromDate,toDate);
+			System.out.println("List Found = "+billHeaderRes);
 		} catch (Exception e) {
 
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package com.ujwal.soft.repositories;
+/*package com.ujwal.soft.repositories;
 
 import java.util.List;
 
@@ -36,4 +36,4 @@ public interface GetMonthlyReportRepo extends JpaRepository<MonthlyReport, Integ
 	List<MonthlyReport> getBillBetweenDate(@Param("fromDate") String fromDate, @Param("toDate") String toDate ,@RequestParam("compId") int compId);
 
 }
-   
+   */

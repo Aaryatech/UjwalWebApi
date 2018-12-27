@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.ujwal.soft.common.DateConvertor;
 import com.ujwal.soft.models.BillHeader;
@@ -17,16 +18,17 @@ import com.ujwal.soft.models.CustReport;
 import com.ujwal.soft.models.MonthlyReport;
 import com.ujwal.soft.repositories.GetBillReportRepo;
 import com.ujwal.soft.repositories.GetCustReportRepo;
-import com.ujwal.soft.repositories.GetMonthlyReportRepo;
+//import com.ujwal.soft.repositories.GetMonthlyReportRepo;
 
-@Controller
+@RestController
+@RequestMapping("/ujwal")
 public class MReportApi {
 	@Autowired
 	GetBillReportRepo getBillReportReportrepo;
 	@Autowired
 	GetCustReportRepo getCustReportRepo;
-	@Autowired
-	GetMonthlyReportRepo getmonthlyReportReportrepo;
+	/*@Autowired
+	GetMonthlyReportRepo getmonthlyReportReportrepo;*/
 	
 	@RequestMapping(value = { "/getContractorBetweenDate" }, method = RequestMethod.POST)
 	public @ResponseBody List<CompReport> getContractorBetweenDate(@RequestParam("fromDate") String fromDate,
@@ -58,7 +60,7 @@ public class MReportApi {
 			System.out.println(custId);
 
 			headerList = getCustReportRepo.getCustBetweenDate(fromDate, toDate, custId);
-			System.out.println(headerList.toString());
+			System.out.println("Service Responce="+headerList);
 		
 		} catch (Exception e) {
 			
@@ -71,7 +73,7 @@ public class MReportApi {
 	}
 
 
-	@RequestMapping(value = { "/getMonthlyBetweenDate" }, method = RequestMethod.POST)
+	/*@RequestMapping(value = { "/getMonthlyBetweenDate" }, method = RequestMethod.POST)
 	public @ResponseBody List<MonthlyReport> getMonthlyBetweenDate(@RequestParam("fromDate") String fromDate,
 			@RequestParam("toDate") String toDate ,@RequestParam("compId") int compId ) {
     //      System.out.println("aZSxdcfgvbhjnmk");
@@ -89,6 +91,6 @@ public class MReportApi {
 
 		}
 		return headerList;
-
-	}
+*/
+	//}
 }
