@@ -141,7 +141,7 @@ public @ResponseBody List<GetBillHeader> findBillsByHeaderId(@RequestParam("bill
 
 		Document doc = new Document();
 
-		DateFormat dateFormat = new SimpleDateFormat("2018-12-31");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String curDate = dateFormat.format(new Date());
 
 		try {

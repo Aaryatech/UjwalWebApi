@@ -16,7 +16,7 @@ public interface BillReportRepo extends JpaRepository<BillReport, Integer> {
 			"from bill_header h, m_customer m, bill_details b\n" + 
 			"where h.cust_id=:custId AND h.cust_id=m.cust_id AND\n" + 
 			"b.bill_header_id=h.bill_header_id AND \n" + 
-			"h.bill_date BETWEEN :fromDate AND :toDate GROUP BY b.bill_header_id",nativeQuery=true)
+			"h.bill_date BETWEEN :fromDate AND :toDate ",nativeQuery=true)
 	List<BillReport> getBillHeadersByDate(@Param("custId")int custId,@Param("fromDate") String fromDate,@Param("toDate") String toDate);
 
 }
