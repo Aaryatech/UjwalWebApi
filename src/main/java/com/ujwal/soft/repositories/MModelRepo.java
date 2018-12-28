@@ -29,5 +29,6 @@ public interface MModelRepo extends JpaRepository<MModelBean, Integer> {
 	public int deleteMultiModel(@Param("modelIds") List<Integer> modelIds);
 	
 
+	
 
 }
