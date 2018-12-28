@@ -14,6 +14,7 @@ import com.ujwal.soft.models.MModelBean;
 
 public interface MModelRepo extends JpaRepository<MModelBean, Integer> {
 
+	
 	List<MModelBean> findAllByDelStatus(int i);
 
 	MModelBean findByModelIdAndDelStatus(@Param("modelId") int modelId, int i);
