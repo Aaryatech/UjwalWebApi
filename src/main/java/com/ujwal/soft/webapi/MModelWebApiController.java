@@ -77,5 +77,10 @@ public class MModelWebApiController {
 
 	}
 
+	@RequestMapping(value="/getModelByCompanyId", method=RequestMethod.POST)
+	public @ResponseBody List<MModelBean> getModelByCompanyId(@RequestParam ("companyId") int companyId){
 	
+		return modRepo.findAllByCompanyIdAndDelStatus(companyId, 0);
+		
+	}
 }
