@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ujwal.soft.models.CradentialValidator;
 import com.ujwal.soft.models.Info;
 import com.ujwal.soft.models.MUser;
+import com.ujwal.soft.models.UserBean;
+import com.ujwal.soft.repositories.GetUserRepo;
 import com.ujwal.soft.repositories.MUserRepo;
 
 @RequestMapping("/ujwal")
@@ -21,9 +23,17 @@ public class MUserWebApiController {
 
 	@Autowired MUserRepo muser;
 	
+	@Autowired GetUserRepo userRepo;
+	
 	@RequestMapping(value = "/getAllUsers", method = RequestMethod.GET)
 	public @ResponseBody List<MUser> getAllUserList(){
 		return muser.findAllByDelStatus(0);
+		
+	}
+	
+	@RequestMapping(value = "/getAllUsersByDel", method = RequestMethod.GET)
+	public @ResponseBody List<UserBean> getAllUserListByDel(){
+		return  userRepo.findUserByDelStatus();
 		
 	}
 	

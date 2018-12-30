@@ -1,3 +1,4 @@
+
 package com.ujwal.soft.models;
 
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="m_user")
 public class MUser {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int userId;
 	private String userName;
 	private String userMobile;

@@ -89,9 +89,9 @@ public class MCustomerWebApiController {
 	
 	@Autowired
 	CustomersDetails customerDetail;
-	@RequestMapping(value="/getAllCustomerDetails", method=RequestMethod.GET)
-	public@ResponseBody List<MGetCustomerDetails> getAllCustomerDetails(){
-		return customerDetail.findAllCustomerByDelStatus();
+	@RequestMapping(value="/getAllCustomerDetails", method=RequestMethod.POST)
+	public@ResponseBody List<MGetCustomerDetails> getAllCustomerDetails(@RequestParam("companyId") int companyId){
+		return customerDetail.findAllCustomerByDelStatus(companyId);
 		
 	}
 	

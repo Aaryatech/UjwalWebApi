@@ -87,9 +87,9 @@ public class MPartWebApiController {
 	
 	@Autowired
 	MPartDetails partDetail;
-	@RequestMapping(value="/getAllPartDetails", method=RequestMethod.GET)
-	@ResponseBody List<MPartList> getAllPartDetails(){
-		return partDetail.getAllPartDetail();
+	@RequestMapping(value="/getAllPartDetails", method=RequestMethod.POST)
+	@ResponseBody List<MPartList> getAllPartDetails(@RequestParam ("companyId") int companyId){
+		return partDetail.getAllPartDetail(companyId);
 		
 	}
 }

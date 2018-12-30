@@ -23,8 +23,8 @@ public interface MLocationRepo extends JpaRepository<MLocation, Integer> {
 	@Modifying
 	@Query(value="update m_location set del_status = 1 where location_id=:id",nativeQuery=true)
 	public int deleteLocation(@Param("id") int id);
-
-	public List<MLocation> findAllByDelStatus(int i);
+	
+	public List<MLocation> findAllByCompIdAndDelStatus(@Param("companyId") int companyId, int i);
 
 	public MLocation findByLocationIdAndDelStatus(int LocationId, int DelStatus);
 
@@ -32,5 +32,7 @@ public interface MLocationRepo extends JpaRepository<MLocation, Integer> {
 	@Modifying
 	@Query(value = "UPDATE m_location SET del_status=1  WHERE location_id IN(:LocIds)",nativeQuery=true)
 	public int deleteMultiLocation(@Param("LocIds") List<Integer> LocIds);
+
+	public List<MLocation> findAllByDelStatus(int i);
 		
 }

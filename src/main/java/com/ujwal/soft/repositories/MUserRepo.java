@@ -25,10 +25,7 @@ public interface MUserRepo extends JpaRepository<MUser, Integer> {
 	@Query(value="update m_user set del_status = 1 where user_id=:id",nativeQuery=true)
 	public int deleteUser(@Param("id") int id);
 	
-	/*@Query(value="SELECT user_mobile, user_pwd FROM m_user WHERE  user_mobile =:usrMob and user_pwd =:userPass",nativeQuery=true)
-	public String validateCredentials(@Param("usrMob") String usrMob, @Param("userPass") String userPass); */
-	
-	public List<MUser> findAllByDelStatus(int delStatus);
+	public List<MUser> findAllByDelStatus(int i);
 	
 	public MUser findByUserIdAndDelStatus(int userId, int delStatus);
 	

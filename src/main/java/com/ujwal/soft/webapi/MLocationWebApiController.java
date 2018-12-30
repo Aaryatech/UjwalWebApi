@@ -28,14 +28,21 @@ public class MLocationWebApiController {
 		
 	}
 	
-	@RequestMapping(value="/getAllLocations", method=RequestMethod.GET)
+	
+	@RequestMapping(value="/getAllLocationsByDel", method=RequestMethod.GET)
 	public@ResponseBody List<MLocation> getAllLocation() {
 		return mlocRepo.findAllByDelStatus(0);
 		
 	}
 	
+	@RequestMapping(value="/getAllLocations", method=RequestMethod.POST)
+	public@ResponseBody List<MLocation> getAllLocation(@RequestParam("companyId") int companyId) {
+		return mlocRepo.findAllByCompIdAndDelStatus(companyId, 0);
+		
+	}
+	
 	@RequestMapping(value="/getLocationById", method=RequestMethod.POST)
-	public@ResponseBody MLocation getLocationId(@RequestParam int id){
+	public@ResponseBody MLocation getLocationId(@RequestParam("id") int id){
 		return mlocRepo.findByLocationIdAndDelStatus(id, 0);
 		
 	}
@@ -57,7 +64,6 @@ public class MLocationWebApiController {
 		}
 		
 		return info;
-		
 	}
 	
 	@RequestMapping(value = { "/deleteMultiLocation" }, method = RequestMethod.POST)

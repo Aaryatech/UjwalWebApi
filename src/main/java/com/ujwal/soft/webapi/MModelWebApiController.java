@@ -40,7 +40,7 @@ public class MModelWebApiController {
 	@RequestMapping(value="/getModelByDelStatus", method = RequestMethod.GET)
 	public @ResponseBody List<MModelBean> getModelByDelStatus() {
 		
-		return modRepo.findAllByDelStatus(0);
+		return modRepo.findAllByDelStatus();
 				
 	}
 	
