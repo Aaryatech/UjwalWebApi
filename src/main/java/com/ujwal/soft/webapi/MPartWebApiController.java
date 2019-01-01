@@ -40,7 +40,12 @@ public class MPartWebApiController {
 		
 	}
 	
-	
+
+	@RequestMapping(value="/getAllPartByModelId", method=RequestMethod.POST)
+	public@ResponseBody List<MPart> getAllPartByModelId(@RequestParam("modelId")int modelId){
+		return mpartRepo.getAllPartByModelId(modelId);
+		
+	}
 	
 	@RequestMapping(value="/deletePartId", method=RequestMethod.POST)
 	public @ResponseBody Info delPart(@RequestParam int id) {

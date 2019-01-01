@@ -42,7 +42,7 @@ public class MLocationWebApiController {
 	}
 	
 	@RequestMapping(value="/getLocationById", method=RequestMethod.POST)
-	public@ResponseBody MLocation getLocationId(@RequestParam("id") int id){
+	public @ResponseBody MLocation getLocationId(@RequestParam("id") int id){
 		return mlocRepo.findByLocationIdAndDelStatus(id, 0);
 		
 	}

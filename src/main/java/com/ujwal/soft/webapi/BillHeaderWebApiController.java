@@ -53,8 +53,6 @@ public class BillHeaderWebApiController {
 		System.err.println("header body " + billHeader.toString());
 
 		BillHeader billRes = null;
-		//BillDetails billDetails=null;
-
 		try {
 			billRes = getBillRepo.save(billHeader);
 
@@ -137,7 +135,7 @@ public @ResponseBody List<GetBillHeader> findBillsByHeaderId(@RequestParam("bill
 	}
 
 	@RequestMapping(value = { "/getDocument" }, method = RequestMethod.POST)
-	public @ResponseBody Document getDocument(@RequestParam("docCode") int docCode) {
+	public @ResponseBody Document getDocument(@RequestParam("locationId") int locationId,@RequestParam("docCode") int docCode) {
 
 		Document doc = new Document();
 
@@ -146,8 +144,8 @@ public @ResponseBody List<GetBillHeader> findBillsByHeaderId(@RequestParam("bill
 
 		try {
 
-			doc = getDocumentRepo.getDocuData(docCode, curDate);
-			//System.err.println("getting doc " + doc.toString());
+			doc = getDocumentRepo.getDocuData(locationId,docCode, curDate);
+			System.err.println("getting doc " + doc.toString());
 
 		} catch (Exception e) {
 			System.err.println("Exc in  /getDocument" + e.getMessage());
@@ -159,13 +157,13 @@ public @ResponseBody List<GetBillHeader> findBillsByHeaderId(@RequestParam("bill
 
 	}
 	@RequestMapping(value = { "/updateDocSrNo" }, method = RequestMethod.POST)
-	public @ResponseBody Info updateDocSrNo(@RequestParam("docCode") int docCode, @RequestParam("srNo") int srNo) {
+	public @ResponseBody Info updateDocSrNo(@RequestParam("locationId") int locationId,@RequestParam("docCode") int docCode, @RequestParam("srNo") int srNo) {
 
 		Info info = new Info();
 
 		try {
 
-			int update = getDocumentRepo.updateDocSrNo(srNo, docCode);
+			int update = getDocumentRepo.updateDocSrNo(locationId,srNo, docCode);
 
 			if (update == 1) {
 				info.setError(false);
@@ -186,14 +184,20 @@ public @ResponseBody List<GetBillHeader> findBillsByHeaderId(@RequestParam("bill
 
 	}
 	@RequestMapping(value = { "/getBillHeadersByDate" }, method = RequestMethod.POST)
-	public @ResponseBody List<BillReport> getBillHeadersByDate(@RequestParam("custId")int custId,@RequestParam("fromDate") String fromDate,@RequestParam("toDate") String toDate) {
+	public @ResponseBody List<GetBillHeader> getBillHeadersByDate(@RequestParam("compId")int compId,@RequestParam("custId")int custId,@RequestParam("fromDate") String fromDate,@RequestParam("toDate") String toDate) {
 
 
-		List<BillReport> billHeaderRes = null;
+		List<GetBillHeader> billHeaderRes = null;
 
 		try {
+ 
+			if(custId==0)
+			{
+				billHeaderRes = getBillHeaderRepository.getAllBillHeadersByDate(compId,fromDate,toDate);
 
-			billHeaderRes = billRepo.getBillHeadersByDate(custId,fromDate,toDate);
+			}else {
+				billHeaderRes = getBillHeaderRepository.getBillHeadersByDate(compId,custId,fromDate,toDate);
+			}
 			System.out.println("List Found = "+billHeaderRes);
 		} catch (Exception e) {
 

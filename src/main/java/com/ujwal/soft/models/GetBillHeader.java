@@ -29,9 +29,9 @@ public class GetBillHeader implements Serializable{
 	private String custPan; 
 	private String custEmail;
 	private String custVehNo;
-	private String custChasiNo;
 	private String custRegisNo;
-	private String custRoNo;
+	private String custModelNo;
+	private String custVinNo;
 	private int companyId;
 	private String compName;
 	private int locId;
@@ -61,6 +61,18 @@ public class GetBillHeader implements Serializable{
 	List<GetBillDetail> getBillDetail;
 	
 	
+	public String getCustModelNo() {
+		return custModelNo;
+	}
+	public void setCustModelNo(String custModelNo) {
+		this.custModelNo = custModelNo;
+	}
+	public String getCustVinNo() {
+		return custVinNo;
+	}
+	public void setCustVinNo(String custVinNo) {
+		this.custVinNo = custVinNo;
+	}
 	public String getCustAddress() {
 		return custAddress;
 	}
@@ -97,24 +109,14 @@ public class GetBillHeader implements Serializable{
 	public void setCustVehNo(String custVehNo) {
 		this.custVehNo = custVehNo;
 	}
-	public String getCustChasiNo() {
-		return custChasiNo;
-	}
-	public void setCustChasiNo(String custChasiNo) {
-		this.custChasiNo = custChasiNo;
-	}
+	
 	public String getCustRegisNo() {
 		return custRegisNo;
 	}
 	public void setCustRegisNo(String custRegisNo) {
 		this.custRegisNo = custRegisNo;
 	}
-	public String getCustRoNo() {
-		return custRoNo;
-	}
-	public void setCustRoNo(String custRoNo) {
-		this.custRoNo = custRoNo;
-	}
+
 	public List<GetBillDetail> getGetBillDetail() {
 		return getBillDetail;
 	}
@@ -305,15 +307,17 @@ public class GetBillHeader implements Serializable{
 	@Override
 	public String toString() {
 		return "GetBillHeader [billHeaderId=" + billHeaderId + ", invoiceNo=" + invoiceNo + ", billDate=" + billDate
-				+ ", billDateTime=" + billDateTime + ", custId=" + custId + ", custName=" + custName + ", companyId="
-				+ companyId + ", compName=" + compName + ", locId=" + locId + ", locationName=" + locationName
-				+ ", userId=" + userId + ", userName=" + userName + ", taxPer=" + taxPer + ", taxableAmt=" + taxableAmt
-				+ ", sgstAmt=" + sgstAmt + ", cgstAmt=" + cgstAmt + ", igstAmt=" + igstAmt + ", discAmt=" + discAmt
-				+ ", roundOff=" + roundOff + ", totaTax=" + totaTax + ", grandTotal=" + grandTotal + ", status="
-				+ status + ", remark=" + remark + ", delStatus=" + delStatus + ", exInt1=" + exInt1 + ", exInt2="
-				+ exInt2 + ", exVar1=" + exVar1 + ", exVar2=" + exVar2 + ", exFloat1=" + exFloat1 + ", exFloat2="
-				+ exFloat2 + ", getBillDetail=" + getBillDetail + "]";
+				+ ", billDateTime=" + billDateTime + ", custId=" + custId + ", custName=" + custName + ", custAddress="
+				+ custAddress + ", custPhone=" + custPhone + ", custGstn=" + custGstn + ", custPan=" + custPan
+				+ ", custEmail=" + custEmail + ", custVehNo=" + custVehNo + ", custRegisNo=" + custRegisNo
+				+ ", custModelNo=" + custModelNo + ", custVinNo=" + custVinNo + ", companyId=" + companyId
+				+ ", compName=" + compName + ", locId=" + locId + ", locationName=" + locationName + ", userId="
+				+ userId + ", userName=" + userName + ", taxPer=" + taxPer + ", taxableAmt=" + taxableAmt + ", sgstAmt="
+				+ sgstAmt + ", cgstAmt=" + cgstAmt + ", igstAmt=" + igstAmt + ", discAmt=" + discAmt + ", roundOff="
+				+ roundOff + ", totaTax=" + totaTax + ", grandTotal=" + grandTotal + ", status=" + status + ", remark="
+				+ remark + ", delStatus=" + delStatus + ", exInt1=" + exInt1 + ", exInt2=" + exInt2 + ", exVar1="
+				+ exVar1 + ", exVar2=" + exVar2 + ", exFloat1=" + exFloat1 + ", exFloat2=" + exFloat2
+				+ ", getBillDetail=" + getBillDetail + "]";
 	}
 	
-    
 }

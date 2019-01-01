@@ -57,9 +57,9 @@ public class ujwalDocumentController {
 		return docList;
 
 	}
-
+/*
 	@RequestMapping(value = { "/getDocument" }, method = RequestMethod.POST)
-	public @ResponseBody Document getDocument(@RequestParam("docCode") int docCode) {
+	public @ResponseBody Document getDocument(@RequestParam("locationId") int locationId,@RequestParam("docCode") int docCode) {
 
 		Document doc = new Document();
 
@@ -68,7 +68,7 @@ public class ujwalDocumentController {
 
 		try {
 
-			doc = getDocumentRepo.getDocuData(docCode, curDate);
+			doc = getDocumentRepo.getDocuData(locationId,docCode, curDate);
 			System.err.println("getting doc " + doc.toString());
 
 		} catch (Exception e) {
@@ -81,13 +81,13 @@ public class ujwalDocumentController {
 
 	}
 	@RequestMapping(value = { "/updateDocSrNo" }, method = RequestMethod.POST)
-	public @ResponseBody Info updateDocSrNo(@RequestParam("docCode") int docCode, @RequestParam("srNo") int srNo) {
+	public @ResponseBody Info updateDocSrNo(@RequestParam("locationId") int locationId,@RequestParam("docCode") int docCode, @RequestParam("srNo") int srNo) {
 
 		Info info = new Info();
 
 		try {
 
-			int update = getDocumentRepo.updateDocSrNo(srNo, docCode);
+			int update = getDocumentRepo.updateDocSrNo(locationId,srNo, docCode);
 
 			if (update == 1) {
 				info.setError(false);
@@ -106,5 +106,5 @@ public class ujwalDocumentController {
 		}
 		return info;
 
-	}
+	}*/
 }

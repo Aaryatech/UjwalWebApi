@@ -30,6 +30,9 @@ public interface MPartRepo extends JpaRepository<MPart, Integer> {
 	@Query(value="update m_part set part_del_status = 1 where part_id IN(:partIds)",nativeQuery=true)
 	int deleteMultiPart(@Param("partIds") List<Integer> custIds);
 
+	@Query(value="SELECT * FROM m_part WHERE part_del_status = 0 and part_ro_no=:modelId ORDER BY part_id DESC",nativeQuery=true)
+	List<MPart> getAllPartByModelId(@Param("modelId") int modelId);
+
 	
 	
 	//int deleteMultiCompany(List<Integer> partIds);
