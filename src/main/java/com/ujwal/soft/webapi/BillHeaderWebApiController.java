@@ -68,7 +68,7 @@ public class BillHeaderWebApiController {
 			System.err.println("exce in saving order head and detail " + e.getMessage());
 			e.printStackTrace();
 		}
-		System.err.println("Bill " + billRes.toString());
+		//System.err.println("Bill " + billRes.toString());
 		return billRes;
 	}
 

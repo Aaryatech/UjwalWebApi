@@ -36,31 +36,36 @@ public class MReportApi {
           System.out.println("aZSxdcfgvbhjnmk");
 		List<CompReport> headerList = new ArrayList<CompReport>();
 
-		try {
-			System.out.println(compId);
-
-			headerList = getBillReportReportrepo.getBillBetweenDate(fromDate, toDate, compId);
-			System.out.println(headerList.toString());
 		
-		} catch (Exception e) {
-
-			e.printStackTrace();
-
-		}
-		return headerList;
+			System.out.println(compId+" "+fromDate+" "+toDate);
+			if(compId<=0) {
+			headerList = getBillReportReportrepo.getBillBetweenDate(fromDate, toDate);
+			System.out.println("Response Data="+headerList);
+			}else {
+			
+				headerList = getBillReportReportrepo.getBillBetweenDate(fromDate, toDate, compId);
+				System.out.println("Response Data="+headerList);
+			}
+				return headerList;
 
 	}
+	
+	
 	@RequestMapping(value = { "/getCustomerBetweenDate" }, method = RequestMethod.POST)
 	public @ResponseBody List<CustReport> getCustomerBetweenDate(@RequestParam("fromDate") String fromDate,
-			@RequestParam("toDate") String toDate ,@RequestParam("custId") int custId ) {
+			@RequestParam("toDate") String toDate ,@RequestParam("custId") int custId, @RequestParam("compId") int compId ) {
           System.out.println("aZSxdcfgvbhjnmk");
 		List<CustReport> headerList = new ArrayList<CustReport>();
 
 		try {
-			System.out.println(custId);
-
-			headerList = getCustReportRepo.getCustBetweenDate(fromDate, toDate, custId);
+			System.out.println("Customerrr Id="+custId);
+			if(custId<=0) {
+				headerList = getCustReportRepo.getCustBetweenDate(fromDate, toDate,compId);
+				System.out.println("Service Responce="+headerList);
+			}else {
+			headerList = getCustReportRepo.getCustBetweenDate(fromDate, toDate, custId,compId);
 			System.out.println("Service Responce="+headerList);
+			}
 		
 		} catch (Exception e) {
 			

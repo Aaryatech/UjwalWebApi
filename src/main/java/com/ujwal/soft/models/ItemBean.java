@@ -11,7 +11,7 @@ public class ItemBean {
 	private int partId;
 	private String partName;
 	private String hsnCode;
-	
+	private float taxPer;
 	private float cgst;
 	private float sgst;
 	private float igst;	
@@ -80,12 +80,20 @@ public class ItemBean {
 	public void setTaxableAmount(float taxableAmount) {
 		this.taxableAmount = taxableAmount;
 	}
+	public float getTaxPer() {
+		return taxPer;
+	}
+	public void setTaxPer(float taxPer) {
+		this.taxPer = taxPer;
+	}
 	@Override
 	public String toString() {
-		return "ItemBean [billDetailId=" + billDetailId + ", partId=" + partId
-				+ ", partName=" + partName + ", hsnCode=" + hsnCode + ", cgst=" + cgst + ", sgst=" + sgst + ", igst="
-				+ igst + ", qty=" + qty + ", totalTax=" + totalTax + ", taxPer= , taxableAmount="
-				+ taxableAmount + "]";
+		return "ItemBean [billDetailId=" + billDetailId + ", partId=" + partId + ", partName=" + partName + ", hsnCode="
+				+ hsnCode + ", taxPer=" + taxPer + ", cgst=" + cgst + ", sgst=" + sgst + ", igst=" + igst + ", qty="
+				+ qty + ", totalTax=" + totalTax + ", taxableAmount=" + taxableAmount + "]";
 	}
+	
+	
+	
 	
 }

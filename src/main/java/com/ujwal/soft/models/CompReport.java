@@ -13,8 +13,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class CompReport {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-
 	private int billHeaderId; 
 	private String invoiceNo;
 	private Date billDate;
