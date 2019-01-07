@@ -18,7 +18,22 @@ public class ItemBean {
 	private float qty;
 	private float totalTax;
 	private float taxableAmount;
+	private float cgstPer;
+	private float sgstPer;
+	 
 	
+	public float getCgstPer() {
+		return cgstPer;
+	}
+	public void setCgstPer(float cgstPer) {
+		this.cgstPer = cgstPer;
+	}
+	public float getSgstPer() {
+		return sgstPer;
+	}
+	public void setSgstPer(float sgstPer) {
+		this.sgstPer = sgstPer;
+	}
 	public int getBillDetailId() {
 		return billDetailId;
 	}

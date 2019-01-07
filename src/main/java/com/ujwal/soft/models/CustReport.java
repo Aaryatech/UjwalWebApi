@@ -17,20 +17,15 @@ public class CustReport {
 	private String billDate;
 	private int custId;
 	private int companyId;
-	//private float taxPer;
-	private float taxableAmount;
-	private float sgstRs;
-	private float cgstRs;
-	private float igstRs;
-	private float totalTax;
+	private String invoiceNo;
+	private float taxableAmt;
+	private float sgstAmt;
+	private float cgstAmt;
+	private float igstAmt;
+	private float totaTax;
 	private float grandTotal;
 	private String custName;
-	/*private int locId;
-	private int userId;
-	private float roundOff;
-	private float discAmt;
-	private String userName;
-*/	private String custGstn;
+	private String custGstn;
 
 	
 	public int getBillHeaderId() {
@@ -58,46 +53,38 @@ public class CustReport {
 	public void setCompanyId(int companyId) {
 		this.companyId = companyId;
 	}
-/*	public float getTaxPer() {
-		return taxPer;
-	}
-	public void setTaxPer(float taxPer) {
-		this.taxPer = taxPer;
-	}*/
-	
-
-	public float getSgstRs() {
-		return sgstRs;
-	}
-	public float getTaxableAmount() {
-		return taxableAmount;
-	}
-	public void setTaxableAmount(float taxableAmount) {
-		this.taxableAmount = taxableAmount;
-	}
-	public void setSgstRs(float sgstRs) {
-		this.sgstRs = sgstRs;
-	}
-	public float getCgstRs() {
-		return cgstRs;
-	}
-	public void setCgstRs(float cgstRs) {
-		this.cgstRs = cgstRs;
-	}
-	public float getIgstRs() {
-		return igstRs;
-	}
-	public void setIgstRs(float igstRs) {
-		this.igstRs = igstRs;
-	}
-	public float getTotalTax() {
-		return totalTax;
-	}
-	public void setTotalTax(float totalTax) {
-		this.totalTax = totalTax;
-	}
 	public float getGrandTotal() {
 		return grandTotal;
+	}
+	public float getTaxableAmt() {
+		return taxableAmt;
+	}
+	public void setTaxableAmt(float taxableAmt) {
+		this.taxableAmt = taxableAmt;
+	}
+	public float getSgstAmt() {
+		return sgstAmt;
+	}
+	public void setSgstAmt(float sgstAmt) {
+		this.sgstAmt = sgstAmt;
+	}
+	public float getCgstAmt() {
+		return cgstAmt;
+	}
+	public void setCgstAmt(float cgstAmt) {
+		this.cgstAmt = cgstAmt;
+	}
+	public float getIgstAmt() {
+		return igstAmt;
+	}
+	public void setIgstAmt(float igstAmt) {
+		this.igstAmt = igstAmt;
+	}
+	public float getTotaTax() {
+		return totaTax;
+	}
+	public void setTotaTax(float totaTax) {
+		this.totaTax = totaTax;
 	}
 	public void setGrandTotal(float grandTotal) {
 		this.grandTotal = grandTotal;
@@ -108,51 +95,25 @@ public class CustReport {
 	public void setCustName(String custName) {
 		this.custName = custName;
 	}
-/*	public int getLocId() {
-		return locId;
-	}
-	public void setLocId(int locId) {
-		this.locId = locId;
-	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	public float getRoundOff() {
-		return roundOff;
-	}
-	public void setRoundOff(float roundOff) {
-		this.roundOff = roundOff;
-	}
-	public float getDiscAmt() {
-		return discAmt;
-	}
-	public void setDiscAmt(float discAmt) {
-		this.discAmt = discAmt;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}*/
 	public String getCustGstn() {
 		return custGstn;
 	}
 	public void setCustGstn(String custGstn) {
 		this.custGstn = custGstn;
 	}
+	public String getInvoiceNo() {
+		return invoiceNo;
+	}
+	public void setInvoiceNo(String invoiceNo) {
+		this.invoiceNo = invoiceNo;
+	}
 	@Override
 	public String toString() {
 		return "CustReport [billHeaderId=" + billHeaderId + ", billDate=" + billDate + ", custId=" + custId
-				+ ", companyId=" + companyId + ", taxableAmount=" + taxableAmount + ", sgstRs=" + sgstRs + ", cgstRs="
-				+ cgstRs + ", igstRs=" + igstRs + ", totalTax=" + totalTax + ", grandTotal=" + grandTotal + ", custName="
-				+ custName + ", custGstn=" + custGstn + "]";
+				+ ", companyId=" + companyId + ", invoiceNo=" + invoiceNo + ", taxableAmt=" + taxableAmt + ", sgstAmt="
+				+ sgstAmt + ", cgstAmt=" + cgstAmt + ", igstAmt=" + igstAmt + ", totaTax=" + totaTax + ", grandTotal="
+				+ grandTotal + ", custName=" + custName + ", custGstn=" + custGstn + "]";
 	}
-	
-	
-	
+		
 	
 }

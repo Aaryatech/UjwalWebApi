@@ -14,13 +14,52 @@ public class TaxBillBean {
 	private String custGstn; 
 	private String billDate;
 	private String custName;
-	private float cgstPer;
-	private float sgstPer;
-	private float igstPer;
+	private float cgstAmt;
+	private float sgstAmt;
+	private float igstAmt;
+	private float taxableAmt;
 	private float taxPer;
+	private String invoiceNo;
 	private float grandTotal;
 	
-	private float taxableAmount;
+	
+	
+	public float getCgstAmt() {
+		return cgstAmt;
+	}
+	public void setCgstAmt(float cgstAmt) {
+		this.cgstAmt = cgstAmt;
+	}
+	public float getSgstAmt() {
+		return sgstAmt;
+	}
+	public void setSgstAmt(float sgstAmt) {
+		this.sgstAmt = sgstAmt;
+	}
+	public float getIgstAmt() {
+		return igstAmt;
+	}
+	public void setIgstAmt(float igstAmt) {
+		this.igstAmt = igstAmt;
+	}
+	public float getTaxableAmt() {
+		return taxableAmt;
+	}
+	public void setTaxableAmt(float taxableAmt) {
+		this.taxableAmt = taxableAmt;
+	}
+	public float getTaxPer() {
+		return taxPer;
+	}
+	public void setTaxPer(float taxPer) {
+		this.taxPer = taxPer;
+	}
+	public String getInvoiceNo() {
+		return invoiceNo;
+	}
+	public void setInvoiceNo(String invoiceNo) {
+		this.invoiceNo = invoiceNo;
+	}
 	public int getBillDetailId() {
 		return billDetailId;
 	}
@@ -62,38 +101,7 @@ public class TaxBillBean {
 	}
 	public void setCustName(String custName) {
 		this.custName = custName;
-	}
-	public float getIgstPer() {
-		return igstPer;
-	}
-	public void setIgstPer(float igstPer) {
-		this.igstPer = igstPer;
-	}
-	public float getTaxableAmount() {
-		return taxableAmount;
-	}
-	public void setTaxableAmount(float taxableAmount) {
-		this.taxableAmount = taxableAmount;
-	}
-	public float getCgstPer() {
-		return cgstPer;
-	}
-	public void setCgstPer(float cgstPer) {
-		this.cgstPer = cgstPer;
-	}
-	public float getSgstPer() {
-		return sgstPer;
-	}
-	public void setSgstPer(float sgstPer) {
-		this.sgstPer = sgstPer;
-	}
-	public float getTaxPer() {
-		return taxPer;
-	}
-	public void setTaxPer(float taxPer) {
-		this.taxPer = taxPer;
-	}
-	
+	}	
 	public float getGrandTotal() {
 		return grandTotal;
 	}
@@ -104,10 +112,10 @@ public class TaxBillBean {
 	public String toString() {
 		return "TaxBillBean [billDetailId=" + billDetailId + ", billHeaderId=" + billHeaderId + ", companyId="
 				+ companyId + ", custId=" + custId + ", custGstn=" + custGstn + ", billDate=" + billDate + ", custName="
-				+ custName + ", cgstPer=" + cgstPer + ", sgstPer=" + sgstPer + ", igstPer=" + igstPer + ", taxPer="
-				+ taxPer + ", grandTotal=" + grandTotal + ", taxableAmount=" + taxableAmount + "]";
+				+ custName + ", cgstAmt=" + cgstAmt + ", sgstAmt=" + sgstAmt + ", igstAmt=" + igstAmt + ", taxableAmt="
+				+ taxableAmt + ", taxPer=" + taxPer + ", invoiceNo=" + invoiceNo + ", grandTotal=" + grandTotal + "]";
 	}
-	
+		
 	
 		
 }
