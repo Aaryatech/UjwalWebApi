@@ -56,6 +56,7 @@ public class GetBillHeader implements Serializable{
 	private String exVar2;
 	private float exFloat1;
 	private float exFloat2;
+	private String saleType;
 	
 	@Transient
 	List<GetBillDetail> getBillDetail;
@@ -303,6 +304,12 @@ public class GetBillHeader implements Serializable{
 	}
 	public void setDelStatus(int delStatus) {
 		this.delStatus = delStatus;
+	}	
+	public String getSaleType() {
+		return saleType;
+	}
+	public void setSaleType(String saleType) {
+		this.saleType = saleType;
 	}
 	@Override
 	public String toString() {
@@ -316,8 +323,9 @@ public class GetBillHeader implements Serializable{
 				+ sgstAmt + ", cgstAmt=" + cgstAmt + ", igstAmt=" + igstAmt + ", discAmt=" + discAmt + ", roundOff="
 				+ roundOff + ", totaTax=" + totaTax + ", grandTotal=" + grandTotal + ", status=" + status + ", remark="
 				+ remark + ", delStatus=" + delStatus + ", exInt1=" + exInt1 + ", exInt2=" + exInt2 + ", exVar1="
-				+ exVar1 + ", exVar2=" + exVar2 + ", exFloat1=" + exFloat1 + ", exFloat2=" + exFloat2
-				+ ", getBillDetail=" + getBillDetail + "]";
+				+ exVar1 + ", exVar2=" + exVar2 + ", exFloat1=" + exFloat1 + ", exFloat2=" + exFloat2 + ", saleType="
+				+ saleType + ", getBillDetail=" + getBillDetail + "]";
 	}
+	
 	
 }

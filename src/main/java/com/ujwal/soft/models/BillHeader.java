@@ -20,12 +20,13 @@ public class BillHeader {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int billHeaderId; 
 	private String invoiceNo;
-	private Date billDate;
+	private String billDate;
 	private String billDateTime;
 	private int custId;
 	private int companyId;
 	private int locId;
 	private int userId;
+	
 	private float taxPer;
 	private float taxableAmt;
 	private float sgstAmt;
@@ -44,6 +45,7 @@ public class BillHeader {
 	private String ex_var2;
 	private float ex_float1;
 	private float ex_float2;
+	private String saleType;
 	@Transient
 	List<BillDetails> billDetailList;
 	
@@ -57,6 +59,12 @@ public class BillHeader {
 	public int getBillHeaderId() {
 		return billHeaderId;
 	}
+	public String getSaleType() {
+		return saleType;
+	}
+	public void setSaleType(String saleType) {
+		this.saleType = saleType;
+	}
 	public void setBillHeaderId(int billHeaderId) {
 		this.billHeaderId = billHeaderId;
 	}
@@ -66,11 +74,11 @@ public class BillHeader {
 	public void setInvoiceNo(String invoiceNo) {
 		this.invoiceNo = invoiceNo;
 	}
-	public Date getBillDate() {
+	
+	public String getBillDate() {
 		return billDate;
 	}
-	@JsonFormat(locale = "hi",timezone = "Asia/Kolkata", pattern = "dd-MM-yyyy")
-	public void setBillDate(Date billDate) {
+	public void setBillDate(String billDate) {
 		this.billDate = billDate;
 	}
 	public String getBillDateTime() {
