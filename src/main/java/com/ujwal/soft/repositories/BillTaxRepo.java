@@ -19,7 +19,7 @@ public interface BillTaxRepo extends JpaRepository<TaxBillBean, Integer> {
 			
 			"WHERE billhead.company_id = :comp_id AND billhead.bill_date >= :fromDate AND billhead.bill_date <= :toDate AND bill.bill_header_id = billhead.bill_header_id AND cust.cust_id = billhead.cust_id\r\n" + 
 			
-			"group by billhead.bill_header_id, ",nativeQuery=true)
+			"group by billhead.bill_header_id",nativeQuery=true)
 	
 	public List<TaxBillBean> getBillTaxReportById(@Param("comp_id") int comp_id, @Param("fromDate") String froDate, @Param("toDate") String toDate);
 
