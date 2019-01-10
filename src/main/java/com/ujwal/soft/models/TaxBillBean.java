@@ -21,9 +21,16 @@ public class TaxBillBean {
 	private float taxPer;
 	private String invoiceNo;
 	private float grandTotal;
+	private String exVar1;
 	
 	
 	
+	public String getExVar1() {
+		return exVar1;
+	}
+	public void setExVar1(String exVar1) {
+		this.exVar1 = exVar1;
+	}
 	public float getCgstAmt() {
 		return cgstAmt;
 	}
@@ -113,8 +120,10 @@ public class TaxBillBean {
 		return "TaxBillBean [billDetailId=" + billDetailId + ", billHeaderId=" + billHeaderId + ", companyId="
 				+ companyId + ", custId=" + custId + ", custGstn=" + custGstn + ", billDate=" + billDate + ", custName="
 				+ custName + ", cgstAmt=" + cgstAmt + ", sgstAmt=" + sgstAmt + ", igstAmt=" + igstAmt + ", taxableAmt="
-				+ taxableAmt + ", taxPer=" + taxPer + ", invoiceNo=" + invoiceNo + ", grandTotal=" + grandTotal + "]";
+				+ taxableAmt + ", taxPer=" + taxPer + ", invoiceNo=" + invoiceNo + ", grandTotal=" + grandTotal
+				+ ", exVar1=" + exVar1 + "]";
 	}
+	
 		
 	
 		
