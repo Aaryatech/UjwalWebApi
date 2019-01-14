@@ -27,6 +27,7 @@ public class MModelWebApiController {
 	
 	@RequestMapping(value="/insertNewModel", method=RequestMethod.POST)
 	public @ResponseBody MModelBean addNewModel(@RequestBody MModelBean mod){
+		System.out.println("Web Extra Tax="+mod.toString());
 		return modRepo.save(mod);
 		
 	}

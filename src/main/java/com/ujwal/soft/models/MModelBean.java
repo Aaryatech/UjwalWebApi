@@ -17,6 +17,7 @@ public class MModelBean {
 	private String productionDate;
 	private int delStatus;
 	private int companyId;
+	private int extraTax;
 	
 		
 	public int getDelStatus() {
@@ -55,11 +56,17 @@ public class MModelBean {
 	public void setProductionDate(String productionDate) {
 		this.productionDate = productionDate;
 	}
-	
+	public int getExtraTax() {
+		return extraTax;
+	}
+	public void setExtraTax(int extraTax) {
+		this.extraTax = extraTax;
+	}
 	@Override
 	public String toString() {
 		return "MModelBean [modelId=" + modelId + ", modelName=" + modelName + ", modelNo=" + modelNo
-				+ ", productionDate=" + productionDate + "]";
+				+ ", productionDate=" + productionDate + ", delStatus=" + delStatus + ", companyId=" + companyId
+				+ ", extraTax=" + extraTax + "]";
 	}
 		
 }
