@@ -46,6 +46,7 @@ public class BillHeaderWebApiController {
     @Autowired
     BillReportRepo billRepo;
  
+ 
 
 	@RequestMapping(value = { "/saveBill" }, method = RequestMethod.POST)
 	public @ResponseBody BillHeader saveBill(@RequestBody BillHeader billHeader) {
@@ -88,7 +89,7 @@ public @ResponseBody List<GetBillHeader> findBillsByHeaderId(@RequestParam("bill
 		   System.err.println(billDetailList+"billDetailList");
 			billHeaderRes.get(i).setGetBillDetail(billDetailList);
 		}
-		 System.err.println(billHeaderRes.toString()+"billHeaderRes");
+		 System.err.println(billHeaderRes.toString()+"==billHeaderResData");
 	} catch (Exception e) {
 
 		e.printStackTrace();
@@ -250,4 +251,5 @@ public @ResponseBody List<GetBillHeader> findBillsByHeaderId(@RequestParam("bill
 		return billHeaderRes;
 
 	}
+	
 }
