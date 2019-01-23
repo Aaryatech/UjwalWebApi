@@ -185,19 +185,21 @@ public @ResponseBody List<GetBillHeader> findBillsByHeaderId(@RequestParam("bill
 
 	}
 	@RequestMapping(value = { "/getBillHeadersByDate" }, method = RequestMethod.POST)
-	public @ResponseBody List<GetBillHeader> getBillHeadersByDate(@RequestParam("compId")int compId,@RequestParam("custId")int custId,@RequestParam("fromDate") String fromDate,@RequestParam("toDate") String toDate) {
+	public @ResponseBody List<GetBillHeader> getBillHeadersByDate(@RequestParam("locId")int locId,@RequestParam("compId")int compId,@RequestParam("custId")int custId,@RequestParam("fromDate") String fromDate,@RequestParam("toDate") String toDate) {
 
 
 		List<GetBillHeader> billHeaderRes = null;
-
+		System.out.println("LOcccc"+locId+"/ "+compId);
 		try {
  
 			if(custId==0)
 			{
-				billHeaderRes = getBillHeaderRepository.getAllBillHeadersByDate(compId,fromDate,toDate);
+				System.out.println("LOcccc"+locId+"/ "+compId);
+				billHeaderRes = getBillHeaderRepository.getAllBillHeadersByDate(locId,compId,fromDate,toDate);
 
 			}else {
-				billHeaderRes = getBillHeaderRepository.getBillHeadersByDate(compId,custId,fromDate,toDate);
+				System.out.println("LOcccc"+locId+"/ "+compId);
+				billHeaderRes = getBillHeaderRepository.getBillHeadersByDate(locId,compId,custId,fromDate,toDate);
 			}
 			System.out.println("List Found = "+billHeaderRes);
 		} catch (Exception e) {

@@ -46,8 +46,32 @@ public class MModelWebApiController {
 	}
 	
 	@RequestMapping(value="/changeModelDelStatus", method = RequestMethod.POST)
-	public @ResponseBody int changeStatus(@RequestParam("modelId") int modelId) {
-		return modRepo.delModel(modelId);
+	public @ResponseBody Info changeStatus(@RequestParam("modelId") int modelId) {
+		System.out.println("MOdel:"+modelId);
+		
+		Info info = new Info();
+
+		
+		try {
+			int delete = modRepo.delModel(modelId);
+
+			if (delete >= 1) {
+				info.setError(false);
+				info.setMessage("successfully  Deleted");
+			} else {
+				info.setError(true);
+				info.setMessage(" Deleted to Delete");
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			info.setError(true);
+			info.setMessage(" Deleted to Delete");
+
+		}
+		return info;
+
 		
 	}
 	
@@ -55,7 +79,7 @@ public class MModelWebApiController {
 	public @ResponseBody Info deleteMultiCustomer(@RequestParam("modelIds") List<Integer> modelIds) {
 
 		Info info = new Info();
-
+				System.out.println("Models:"+modelIds);
 		try {
 			int delete = modRepo.deleteMultiModel(modelIds);
 
