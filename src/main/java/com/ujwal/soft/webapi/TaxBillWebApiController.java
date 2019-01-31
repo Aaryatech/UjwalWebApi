@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ujwal.soft.models.GetBillDetail;
+import com.ujwal.soft.models.GetBillHeader;
 import com.ujwal.soft.models.ItemBean;
 import com.ujwal.soft.models.TaxBillBean;
 import com.ujwal.soft.repositories.BillTaxRepo;
@@ -35,5 +38,25 @@ public class TaxBillWebApiController {
 		
 				return taxList;
 		
+	}
+	
+	
+	@RequestMapping(value = { "/findXmlBillsByHeaderId" }, method = RequestMethod.POST)
+	public @ResponseBody List<TaxBillBean> findXmlBillsByHeaderId(@RequestParam("billTempIds")List<Integer> billHeadIdList) {
+
+
+		List<TaxBillBean> taxList=null;
+
+		try {
+			
+			taxList = billtxRepo.getBillTaxReportByIds(billHeadIdList);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
+
+		return taxList;
+
 	}
 }

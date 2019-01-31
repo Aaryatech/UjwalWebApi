@@ -36,6 +36,12 @@ public interface BillTaxRepo extends JpaRepository<TaxBillBean, Integer> {
 	
 	public List<TaxBillBean> getBillTaxReport(@Param("fromDate") String froDate, @Param("toDate") String toDate);
 
+	@Query(value = "SELECT bill.bill_detail_id, billhead.bill_header_id, billhead.company_id, billhead.cust_id, billhead.bill_date, cust.cust_name, sum(bill.taxable_amount) as taxable_amt, (bill.cgst_per + bill.sgst_per) as tax_per,\r\n" + 
+			"			sum(bill.grand_total) as grand_total, cust.cust_gstn, sum(bill.cgst_rs) as cgst_amt, sum(bill.sgst_rs) as sgst_amt, sum(bill.igst_rs) as igst_amt, billhead.invoice_no, bill.ex_var1\r\n" + 
+			"					FROM bill_details bill, bill_header billhead, m_customer cust\r\n" + 
+			"			WHERE bill.bill_header_id=billhead.bill_header_id AND billhead.bill_header_id IN(:billHeadIdList) AND  cust.cust_id = billhead.cust_id		group by  tax_per, bill.bill_detail_id",nativeQuery=true)
+	public List<TaxBillBean> getBillTaxReportByIds(@Param("billHeadIdList")List<Integer> billHeadIdList);
+
 
 
 }
