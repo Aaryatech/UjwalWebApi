@@ -28,9 +28,10 @@ public class MPartWebApiController {
 		return mpartRepo.save(mpart);
 		}
 	
-	@RequestMapping(value="/getAllPart", method=RequestMethod.GET)
-	public@ResponseBody List<MPart> getAllPart(){
-		return mpartRepo.findAllPart();
+	@RequestMapping(value="/getAllPart", method=RequestMethod.POST)
+	public@ResponseBody List<MPart> getAllPart(@RequestParam int compId){
+		
+		return mpartRepo.findAllPart(compId);
 		
 	}
 	

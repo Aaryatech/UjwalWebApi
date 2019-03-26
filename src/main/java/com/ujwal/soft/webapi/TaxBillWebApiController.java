@@ -23,17 +23,21 @@ public class TaxBillWebApiController {
 	@RequestMapping(value = "/getBillTaxReport", method=RequestMethod.POST)
 	
 	public List<TaxBillBean> getTaxWiseBilleport(@RequestParam("comp_id") int comp_id, @RequestParam("fromDate") String froDate, 
-			@RequestParam("toDate") String toDate){
+			@RequestParam("toDate") String toDate, @RequestParam("locationId") int locationId){
+		
 		
 		List<TaxBillBean> taxList=null;
-		//taxList = billtxRepo.getBillTaxReport(comp_id, froDate, toDate);
-		if(comp_id==0)
-		{
-			taxList = billtxRepo.getBillTaxReport(froDate, toDate);
-		}
-		else {
-			taxList = billtxRepo.getBillTaxReportById(comp_id, froDate, toDate);
-		}
+		taxList = billtxRepo.getBillTaxReportById(comp_id, froDate, toDate, locationId);
+//		if(comp_id==0)
+//		{
+//			System.err.println("1");
+//			taxList = billtxRepo.getBillTaxReport(froDate, toDate, locationId);
+//			
+//		}
+//		else {
+//			System.err.println("2");
+//			taxList = billtxRepo.getBillTaxReportById(comp_id, froDate, toDate, locationId);
+//		}
 		
 		
 				return taxList;

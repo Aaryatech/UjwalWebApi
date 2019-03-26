@@ -32,10 +32,10 @@ public interface GetBillReportRepo extends JpaRepository<CompReport, Integer>{
 			"h.taxable_amt,\r\n" + 
 			"h.grand_total\r\n" + 
 			" from bill_header h,m_user u,m_location l,m_company c,m_customer cust where \r\n" + 
-			"h.user_id=u.user_id and l.location_id=h.loc_id and c.comp_id=h.company_id and cust.cust_id=h.cust_id and h.del_status=0 and h.company_id=:compId and h.bill_date  BETWEEN  :fromDate AND :toDate  \r\n" + 
+			"h.loc_id=:locationId and h.user_id=u.user_id and l.location_id=h.loc_id and c.comp_id=h.company_id and cust.cust_id=h.cust_id and h.del_status=0 and h.company_id=:compId and h.bill_date  BETWEEN  :fromDate AND :toDate  \r\n" + 
 			"\r\n" ,nativeQuery = true)
 	List<CompReport> getBillBetweenDate(@Param("fromDate") String fromDate, @Param("toDate") String toDate,
-			@Param("compId") int compId);
+			@Param("compId") int compId, @Param("locationId") int locationId);
 
 	
 	

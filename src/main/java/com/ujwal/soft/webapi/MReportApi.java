@@ -32,19 +32,19 @@ public class MReportApi {
 	
 	@RequestMapping(value = { "/getContractorBetweenDate" }, method = RequestMethod.POST)
 	public @ResponseBody List<CompReport> getContractorBetweenDate(@RequestParam("fromDate") String fromDate,
-			@RequestParam("toDate") String toDate ,@RequestParam("compId") int compId ) {
+			@RequestParam("toDate") String toDate ,@RequestParam("compId") int compId, @RequestParam("locationId") int locationId ) {
           System.out.println("aZSxdcfgvbhjnmk");
 		List<CompReport> headerList = new ArrayList<CompReport>();
 
 		
-			System.out.println(compId+" "+fromDate+" "+toDate);
+			System.out.println(compId+" "+fromDate+" "+toDate+" "+locationId);
 			if(compId<=0) {
 			headerList = getBillReportReportrepo.getBillBetweenDate(fromDate, toDate);
-			System.out.println("Response Data="+headerList);
+			System.out.println("Response Data1="+headerList);
 			}else {
 			
-				headerList = getBillReportReportrepo.getBillBetweenDate(fromDate, toDate, compId);
-				System.out.println("Response Data="+headerList);
+				headerList = getBillReportReportrepo.getBillBetweenDate(fromDate, toDate, compId, locationId);
+				System.out.println("Response Data2="+headerList);
 			}
 				return headerList;
 
